@@ -4,9 +4,9 @@ import { EASE } from "./constants";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#collection" },
+  { label: "Services", href: "#services" },
   { label: "By Intention", href: "#intentions" },
   { label: "Discover", href: "#science" },
-  { label: "Readings", href: "#guidance" },
   { label: "Journal", href: "#journal" },
 ];
 

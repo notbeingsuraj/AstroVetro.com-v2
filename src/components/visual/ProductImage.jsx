@@ -31,7 +31,7 @@ export default function ProductImage({
     .replace(/\.(webp|jpg|png)$/, "");
 
   return (
-    <div className={`relative w-full overflow-hidden ${ratio}`}>
+    <div className={`relative w-full overflow-hidden ${ratio} ${className}`}>
       {!failed ? (
         <picture>
           <source srcSet={`${product.image?.replace(".webp", ".avif")}`} type="image/avif" />
