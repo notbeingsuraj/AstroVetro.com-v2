@@ -34,12 +34,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
               <FadeIn key={intention.id} delay={i * 0.05}>
                 <button
                   type="button"
-                  onClick={() =>
-                    onSelect(
-                      isActive ? null : intention.id,
-                      intention.id === activeIntentionId ? false : true
-                    )
-                  }
+                  onClick={() => onSelect(intention.id)}
                   aria-pressed={isActive}
                   className={`group block h-full w-full rounded-2xl border p-6 text-left transition-all duration-400 ${
                     isActive
