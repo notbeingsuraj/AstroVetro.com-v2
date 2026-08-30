@@ -43,7 +43,7 @@ function Journal() {
         <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
           {journal.map((article, i) => (
             <FadeIn key={article.id} delay={i * 0.05}>
-              <a href={`/journal/${article.id}`} className="group block">
+              <a href="#" className="group block">
                 <div className="aspect-[3/4] overflow-hidden rounded-2xl border hairline bg-white transition-shadow duration-500 group-hover:shadow-lift">
                   <MineralScene
                     id={SCENE_ID[article.id] ?? "selenite"}

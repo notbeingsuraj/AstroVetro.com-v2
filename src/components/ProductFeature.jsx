@@ -44,7 +44,7 @@ function ProductFeature() {
               ₹{featured.price}
             </p>
             <a
-              href={`/product/${featured.id}`}
+              href="#"
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-black"
             >
               View Crystal

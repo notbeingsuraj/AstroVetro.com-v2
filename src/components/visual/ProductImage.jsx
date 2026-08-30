@@ -36,7 +36,7 @@ export default function ProductImage({
             src={product.poster || product.image}
             alt={`${product.name} — ${product.tagline}`}
             loading={eager ? "eager" : "lazy"}
-            fetchpriority={eager ? "high" : "auto"}
+            fetchPriority={eager ? "high" : "auto"}
             decoding={eager ? "sync" : "async"}
             width="800"
             height="800"

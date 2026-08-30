@@ -4,7 +4,7 @@ import ProductImage from "./visual/ProductImage";
 export function ProductCardCompact({ product }) {
   return (
     <a
-      href={`/product/${product.id}`}
+      href="#"
       className="group block focus:outline-none"
       aria-label={`${product.name} — ${product.tagline} — ₹${product.price}`}
     >

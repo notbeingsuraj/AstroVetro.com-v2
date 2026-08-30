@@ -64,14 +64,49 @@ The page optimizes for **product purchase** and **reading booking**:
 
 ```
 Hero → Explore the Collection   (→ #collection)
-Hero → Find Your Crystal        (→ #intentions)
-Hero → Book a Reading           (→ #guidance)
-Guidance → Book a Reading       (→ #guidance)
+Hero → Explore Readings         (→ #services)
+Intention → filter collection   (→ #collection)
 Final CTA → Collection / Reading
 ```
 
-Two paths, one brand: **objects to carry** and **perspectives to discover** —
-never framed as a Products/Services split.
+**Products** (objects to carry) and **Services** (experiences to understand)
+are clearly distinguishable — distinct sections, distinct photography and
+layout — yet remain one unified AstroVetro brand.
+
+## Data Layer
+
+All content lives in `src/data/` so it can be swapped for real API responses:
+
+- `products.js` — 10 products with clean INR pricing (see Pricing note below)
+- `services.js` — 4 guidance services (Tarot, Personal, Intuitive, Relationship)
+- `intentions.js` — 8 intentions, each mapped to real product ids
+- `testimonials.js` — community stories
+- `journal.js` — editorial articles
+
+**Pricing note:** the repo contains no existing pricing data layer, so prices
+use sensible INR values for a premium Indian crystal/spiritual brand (e.g.
+Amethyst ₹888, Rose Quartz ₹799, Black Tourmaline ₹999). Replace these in the
+data files with real database values when the API is connected. No claims
+about rarity or sourcing are fabricated.
+
+## Imagery System
+
+Real photography is the single biggest lever for making the site feel premium.
+It isn't committed here, but the site is **fully wired to consume it**:
+
+- `src/components/visual/ProductImage.jsx` serves AVIF → WebP → JPEG via
+  `<picture>`, lazy-loads below the fold, eagerly loads the hero (LCP), and
+  sets explicit dimensions to prevent layout shift (CLS).
+- `src/components/visual/MineralScene.jsx`, `HeroScene.jsx` and
+  `ServiceVisual.jsx` render photographic-style SVG scenes as graceful
+  fallbacks, so the layout never depends on missing assets.
+- **Generate the real photos per `IMAGERY.md`** and drop them into
+  `public/images/{products,services,hero}/`. No component or data changes are
+  needed — they load automatically.
+
+An editorial/scientific background grid (`src/components/visual/EditorialGrid.jsx`)
+adds subtle architectural-rhythm linework, coordinate markers and orbital arcs
+across sections.
 
 ## Getting Started
 
