@@ -117,15 +117,14 @@ function Backdrop({ tint, wide }) {
 function CrystalFormation({ colors, seed }) {
   const s = seed ?? 0;
   const pts = [
-    // [tipX, tipY, baseLeft, baseRight]
-    [240, 40, 150, 330],
-    [185, 90, 120, 250],
-    [295, 70, 230, 360],
-    [215, 150, 155, 275],
-    [270, 130, 210, 330],
+    { tipX: 240, tipY: 40, baseLeft: 150, baseRight: 330 },
+    { tipX: 185, tipY: 90, baseLeft: 120, baseRight: 250 },
+    { tipX: 295, tipY: 70, baseLeft: 230, baseRight: 360 },
+    { tipX: 215, tipY: 150, baseLeft: 155, baseRight: 275 },
+    { tipX: 270, tipY: 130, baseLeft: 210, baseRight: 330 },
   ].map((p, i) => {
     const off = (i + s) % 3 === 0 ? (i % 2 === 0 ? 20 : -16) : 0;
-    return { ...p, tipX: p[0] + off };
+    return { ...p, tipX: p.tipX + off };
   });
 
   return (
@@ -133,7 +132,7 @@ function CrystalFormation({ colors, seed }) {
       {pts.map((p, i) => (
         <g key={i}>
           <path
-            d={`M${p.tipX} ${p.tipY} L${p.baseRight} 620 L${p["baseLeft"]} 620 Z`}
+            d={`M${p.tipX} ${p.tipY} L${p.baseRight} 620 L${p.baseLeft} 620 Z`}
             fill={colors.base[i % colors.base.length]}
             stroke="#ffffff"
             strokeWidth="1.2"
