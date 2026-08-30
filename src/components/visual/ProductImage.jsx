@@ -25,11 +25,6 @@ export default function ProductImage({
 }) {
   const [failed, setFailed] = useState(false);
 
-  const slug = product.image
-    ?.split("/")
-    .pop()
-    .replace(/\.(webp|jpg|png)$/, "");
-
   return (
     <div className={`relative w-full overflow-hidden ${ratio} ${className}`}>
       {!failed ? (

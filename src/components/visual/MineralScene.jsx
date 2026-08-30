@@ -114,7 +114,7 @@ function Backdrop({ tint, wide }) {
   );
 }
 
-function CrystalFormation({ colors, seed, wide }) {
+function CrystalFormation({ colors, seed }) {
   const s = seed ?? 0;
   const pts = [
     // [tipX, tipY, baseLeft, baseRight]
@@ -159,7 +159,7 @@ function CrystalFormation({ colors, seed, wide }) {
   );
 }
 
-function SingleCrystal({ colors, wide }) {
+function SingleCrystal({ colors }) {
   return (
     <g>
       <path
@@ -190,7 +190,7 @@ function SingleCrystal({ colors, wide }) {
   );
 }
 
-function ColumnFormation({ colors, wide }) {
+function ColumnFormation({ colors }) {
   const cols = [
     { x: 200, w: 34, rot: -6, h: 300 },
     { x: 242, w: 40, rot: 0, h: 360 },
@@ -230,7 +230,7 @@ function ColumnFormation({ colors, wide }) {
   );
 }
 
-function BeadBracelet({ colors, wide }) {
+function BeadBracelet({ colors }) {
   const beads = [];
   for (let i = 0; i < 16; i++) {
     const a = Math.PI * 2 * (i / 16);
@@ -257,7 +257,7 @@ function BeadBracelet({ colors, wide }) {
   );
 }
 
-function CabochonNecklace({ colors, wide }) {
+function CabochonNecklace({ colors }) {
   return (
     <g>
       {/* chain */}
