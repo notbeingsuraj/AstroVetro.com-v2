@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-
-export const EASE = [0.16, 1, 0.3, 1];
+import { EASE } from "./constants";
 
 export function FadeIn({ children, delay = 0, y = 24, className, ...rest }) {
   const reduce = useReducedMotion();

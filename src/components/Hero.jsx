@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { EASE } from "./Motion";
+import { EASE } from "./constants";
 
 function OrbitalDiagram() {
   return (

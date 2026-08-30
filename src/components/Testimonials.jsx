@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { FadeIn } from "./Motion";
 
 // NOTE: Replace these with real customer reviews before launch.

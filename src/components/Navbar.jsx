@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { EASE } from "./Motion";
+import { EASE } from "./constants";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#collection" },

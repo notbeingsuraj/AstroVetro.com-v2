@@ -1,5 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { FadeIn, EASE } from "./Motion";
+import { FadeIn } from "./Motion";
 
 function ScienceVisual() {
   return (

@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { FadeIn, EASE } from "./Motion";
+import { motion } from "framer-motion";
+import { FadeIn } from "./Motion";
 
 const INTENTIONS = [
   {
@@ -53,13 +52,10 @@ const INTENTIONS = [
   },
 ];
 
-function IntentionCard({ intention, index, active, onHover }) {
-  const reduce = useReducedMotion();
+function IntentionCard({ intention }) {
   return (
     <motion.a
       href="#collection"
-      onMouseEnter={() => onHover(index)}
-      onFocus={() => onHover(index)}
       className="group relative block overflow-hidden rounded-2xl border hairline bg-stone-soft p-6 transition-shadow duration-500 hover:shadow-lift"
     >
       {/* mineral texture */}
@@ -96,12 +92,6 @@ function IntentionCard({ intention, index, active, onHover }) {
 }
 
 function IntentionExplorer() {
-  const [active, setActive] = useState(0);
-  const reduce = useReducedMotion();
-
-  // Featured intention displayed at top
-  const featured = INTENTIONS[0];
-
   return (
     <section id="intentions" className="bg-ivory py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -122,12 +112,7 @@ function IntentionExplorer() {
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {INTENTIONS.map((intention, i) => (
             <FadeIn key={intention.title} delay={i * 0.05}>
-              <IntentionCard
-                intention={intention}
-                index={i}
-                active={active}
-                onHover={setActive}
-              />
+              <IntentionCard intention={intention} />
             </FadeIn>
           ))}
         </div>

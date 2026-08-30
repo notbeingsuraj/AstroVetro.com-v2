@@ -1,7 +1,4 @@
-import { useReducedMotion } from "framer-motion";
-
 function ProductCard({ product }) {
-  const reduce = useReducedMotion();
   return (
     <a
       href="#"
