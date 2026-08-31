@@ -19,7 +19,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
   return (
     <section
       id="intentions"
-      className="relative overflow-hidden bg-solar py-32 lg:py-48"
+      className="relative overflow-hidden bg-almond py-32 lg:py-48"
       aria-label="Explore by intention"
     >
       {/* Large background number */}
@@ -164,7 +164,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
                 <a
                   href="#collection"
-                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-accent-blue"
+                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-kesari"
                 >
                   View all pieces
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

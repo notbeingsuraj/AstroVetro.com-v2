@@ -6,7 +6,7 @@ function GuidanceTransition() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-24 lg:py-36">
+    <section className="relative overflow-hidden bg-ivory py-32 lg:py-48">
       {/* Marquee — horizontal moving type */}
       <div className="relative overflow-hidden border-y border-ink/10 py-10 mb-20">
         <motion.div

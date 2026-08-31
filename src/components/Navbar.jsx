@@ -14,7 +14,7 @@ const RIGHT_ACTIONS = [
   { label: "Cart", href: "#" },
 ];
 
-// Section color mapping for dynamic navbar background
+// Section color mapping for dynamic navbar background (matches actual section bg)
 const SECTION_COLORS = {
   top: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
   hero: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
@@ -24,9 +24,9 @@ const SECTION_COLORS = {
   collection: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
   science: { bg: "rgba(17,19,26,0.95)", text: "#FFFDF7" },
   interlude: { bg: "rgba(189,245,208,0.95)", text: "#11131A" },
-  guidance: { bg: "rgba(255,231,214,0.95)", text: "#11131A" },
-  services: { bg: "rgba(255,143,112,0.95)", text: "#11131A" },
-  experience: { bg: "rgba(217,194,255,0.95)", text: "#11131A" },
+  guidance: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
+  services: { bg: "rgba(255,231,214,0.95)", text: "#11131A" },
+  experience: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
   trust: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
   testimonials: { bg: "rgba(255,231,214,0.95)", text: "#11131A" },
   journal: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },

@@ -77,20 +77,20 @@ function Hero() {
         />
       )}
 
-      {/* Large color accent block — Electric Sky */}
+      {/* Large color accent block — muted peacock glow */}
       <motion.div
         initial={reduce ? {} : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -right-32 top-0 h-[60vh] w-[40vw] rounded-full bg-sky/40 blur-[100px]"
+        className="absolute -right-32 top-0 h-[60vh] w-[40vw] rounded-full bg-peacock/60 blur-[110px]"
       />
 
-      {/* Solar accent */}
+      {/* Turmeric-gold glow */}
       <motion.div
         initial={reduce ? {} : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
-        className="absolute -left-20 top-1/3 h-80 w-80 rounded-full bg-solar/30 blur-[80px]"
+        className="absolute -left-20 top-1/3 h-80 w-80 rounded-full bg-sand/60 blur-[90px]"
       />
 
       {/* Grid lines — architectural drafting background */}
@@ -130,7 +130,7 @@ function Hero() {
             <span className="block font-display text-display-xl text-ink">
               LEFT SOMETHING
             </span>
-            <span className="block font-display text-display-xl italic text-accent-blue">
+            <span className="block font-display text-display-xl italic text-kesari">
               FOR YOU.
             </span>
           </motion.h1>
@@ -191,7 +191,7 @@ function Hero() {
           {/* Main image container */}
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] md:max-w-[500px] lg:ml-auto lg:max-w-[520px]">
             {/* Background color block */}
-            <div className="absolute inset-4 bg-sky/30" />
+            <div className="absolute inset-4 bg-peacock/40" />
             
             {/* Image with clip-path reveal */}
             <motion.div
@@ -249,7 +249,7 @@ function Hero() {
             <motion.div
               animate={reduce ? {} : { rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-accent-blue/20"
+              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-mayura/25"
             />
           </div>
         </motion.div>

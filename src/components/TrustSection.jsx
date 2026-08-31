@@ -28,7 +28,7 @@ function TrustSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-ivory py-24 lg:py-36"
+      className="relative overflow-hidden bg-ivory py-32 lg:py-48"
       aria-label="Why choose AstroVetro"
     >
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">

@@ -5,19 +5,19 @@ const STEPS = [
     number: "01",
     title: "Bring your question.",
     text: "A decision, a hesitation, something on your mind. Start wherever you are.",
-    color: "#D9C2FF",
+    color: "#B48CE8",
   },
   {
     number: "02",
     title: "Explore the cards.",
     text: "Together we let the cards reflect the shape of what you are carrying.",
-    color: "#A7DFFF",
+    color: "#4A9ADB",
   },
   {
     number: "03",
     title: "Leave with perspective.",
     text: "Walk away with clarity you didn't have before — and room to decide for yourself.",
-    color: "#FFE66D",
+    color: "#E5A72E",
   },
 ];
 
@@ -61,7 +61,7 @@ function ExperienceSteps() {
               <div className="mb-8">
                 <span
                   className="font-display text-8xl lg:text-9xl"
-                  style={{ color: step.color === "#FFE66D" ? "#11131A" : step.color }}
+                  style={{ color: step.color }}
                 >
                   {step.number}
                 </span>

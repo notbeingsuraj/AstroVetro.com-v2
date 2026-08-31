@@ -101,11 +101,11 @@ function ScienceSection() {
           <motion.h2 variants={fadeUp} className="font-display text-display-lg text-white">
             NATURE HAS
             <br />
-            <span className="italic text-sky">ALWAYS BEEN</span>
+            <span className="italic text-ganges-light">ALWAYS BEEN</span>
             <br />
             STRANGER THAN
             <br />
-            <span className="italic text-solar">FICTION.</span>
+            <span className="italic text-haldi">FICTION.</span>
           </motion.h2>
         </div>
 

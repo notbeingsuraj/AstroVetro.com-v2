@@ -24,7 +24,7 @@ function BrandStatement() {
   return (
     <section
       id="brand"
-      className="relative overflow-hidden bg-sky py-32 lg:py-48"
+      className="relative overflow-hidden bg-sand py-32 lg:py-48"
       aria-label="Brand statement"
     >
       {/* Large background number */}
@@ -67,7 +67,7 @@ function BrandStatement() {
           <span className="block font-display text-display-xl text-ink">
             MATTER AS
           </span>
-          <span className="block font-display text-display-xl italic text-accent-blue">
+          <span className="block font-display text-display-xl italic text-kesari">
             THE STARS.
           </span>
         </motion.h2>
