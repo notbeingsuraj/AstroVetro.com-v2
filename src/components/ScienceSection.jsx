@@ -10,12 +10,12 @@ function OrbitDiagram() {
     >
       <defs>
         <linearGradient id="sciBlue" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#A7DFFF" />
-          <stop offset="100%" stopColor="#6C8CFF" />
+          <stop offset="0%" stopColor="#5B7F9E" />
+          <stop offset="100%" stopColor="#3A5A7A" />
         </linearGradient>
-        <linearGradient id="sciYellow" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#FFE66D" />
-          <stop offset="100%" stopColor="#FFB800" />
+        <linearGradient id="sciGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#C29A44" />
+          <stop offset="100%" stopColor="#A67C2E" />
         </linearGradient>
       </defs>
 
@@ -25,17 +25,17 @@ function OrbitDiagram() {
       <polygon points="360,220 300,280 340,380 390,340" fill="url(#sciBlue)" opacity="0.8" />
 
       {/* Orbital rings */}
-      <circle cx="300" cy="280" r="100" fill="none" stroke="#FFE66D" strokeWidth="0.8" opacity="0.4" strokeDasharray="4 4" />
-      <circle cx="300" cy="280" r="160" fill="none" stroke="#A7DFFF" strokeWidth="0.8" opacity="0.3" strokeDasharray="4 6" />
-      <circle cx="300" cy="280" r="220" fill="none" stroke="#6C8CFF" strokeWidth="0.8" opacity="0.2" strokeDasharray="2 8" />
+      <circle cx="300" cy="280" r="100" fill="none" stroke="#C29A44" strokeWidth="0.8" opacity="0.4" strokeDasharray="4 4" />
+      <circle cx="300" cy="280" r="160" fill="none" stroke="#5B7F9E" strokeWidth="0.8" opacity="0.3" strokeDasharray="4 6" />
+      <circle cx="300" cy="280" r="220" fill="none" stroke="#3E6B6A" strokeWidth="0.8" opacity="0.2" strokeDasharray="2 8" />
 
       {/* Orbiting particles */}
-      <circle cx="400" cy="280" r="5" fill="#FFE66D" />
-      <circle cx="140" cy="280" r="4" fill="#A7DFFF" />
-      <circle cx="80" cy="280" r="3" fill="#6C8CFF" />
+      <circle cx="400" cy="280" r="5" fill="#C29A44" />
+      <circle cx="140" cy="280" r="4" fill="#5B7F9E" />
+      <circle cx="80" cy="280" r="3" fill="#3E6B6A" />
 
       {/* Labels */}
-      <g fill="#FFFDF7" opacity="0.7" fontSize="11" fontFamily="Manrope, sans-serif">
+      <g fill="#F5F0E8" opacity="0.7" fontSize="11" fontFamily="DM Sans, sans-serif">
         <text x="30" y="30">Fig. 01 — Crystal lattice</text>
         <text x="440" y="380">FORMATION · PRESSURE · TIME · MATTER</text>
       </g>
@@ -65,25 +65,25 @@ function ScienceSection() {
   return (
     <section
       id="science"
-      className="relative overflow-hidden bg-ink py-32 lg:py-48"
+      className="relative overflow-hidden bg-shyama py-32 lg:py-48"
       aria-label="Science and spirituality"
     >
       {/* Deep ink background effects */}
       <div className="pointer-events-none absolute inset-0">
         {/* Subtle radial glow */}
         <div className="absolute inset-0" style={{
-          background: "radial-gradient(80% 60% at 50% 50%, rgba(108,140,255,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(80% 60% at 50% 50%, rgba(45,90,88,0.06) 0%, transparent 70%)",
         }} />
         {/* Fine grid lines */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `linear-gradient(to right, #FFFDF7 1px, transparent 1px), linear-gradient(to bottom, #FFFDF7 1px, transparent 1px)`,
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `linear-gradient(to right, #F5F0E8 1px, transparent 1px), linear-gradient(to bottom, #F5F0E8 1px, transparent 1px)`,
           backgroundSize: '100px 100px',
         }} />
       </div>
 
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-start pl-8 pt-8">
-        <span className="text-section-num text-white/[0.05]">06</span>
+        <span className="text-section-num text-white/[0.03]">06</span>
       </div>
 
       <motion.div
@@ -120,7 +120,7 @@ function ScienceSection() {
             <motion.div
               animate={reduce ? {} : { opacity: [0.3, 0.8, 0.3] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute right-0 top-12 h-[2px] w-24 bg-gradient-to-r from-transparent to-accent-blue"
+              className="absolute right-0 top-12 h-[2px] w-24 bg-gradient-to-r from-transparent to-mayura-light"
             />
           </motion.div>
 
@@ -172,7 +172,7 @@ function ScienceSection() {
       </motion.div>
 
       {/* Bottom transition */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-ivory" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-dugdha" />
     </section>
   );
 }
