@@ -45,7 +45,7 @@ function App() {
         />
 
         {/* 04 — The Objects */}
-        <ProductFeature />
+        <ProductFeature index={0} />
 
         {/* 05 — The Collection */}
         <div ref={collectionRef} id="collection">
