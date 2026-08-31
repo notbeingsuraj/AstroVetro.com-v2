@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FadeIn, SectionLabel } from "./Motion";
 import { TarotScene, GuidanceScene } from "./visual/ServiceVisual";
 import services from "../data/services";
@@ -12,28 +13,29 @@ const SCENES = {
 };
 
 function ServiceCard({ service }) {
+  const [failed, setFailed] = useState(false);
   const Scene = SCENES[service.id] ?? TarotScene;
   return (
     <article className="group flex flex-col overflow-hidden rounded-md border border-ink/8 bg-white shadow-soft transition-shadow duration-500 hover:shadow-lift">
       <div className="relative aspect-[4/3] overflow-hidden">
-        {/* real photography when present, else scene fallback */}
-        <picture>
-          <source srcSet={`${service.image}`} type="image/webp" />
-          <source srcSet={service.poster} type="image/jpeg" />
-          <img
-            src={service.poster}
-            alt={service.name}
-            loading="lazy"
-            decoding="async"
-            width="800"
-            height="600"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </picture>
-        <Scene className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+        {!failed ? (
+          <picture>
+            <source srcSet={`${service.image}`} type="image/webp" />
+            <source srcSet={service.poster} type="image/jpeg" />
+            <img
+              src={service.poster}
+              alt={service.name}
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="600"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              onError={() => setFailed(true)}
+            />
+          </picture>
+        ) : (
+          <Scene className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+        )}
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ink/5" />
       </div>
 

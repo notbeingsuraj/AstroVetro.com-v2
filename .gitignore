@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Generated image derivatives (regenerate via `npm run images`).
+# Source photography lives in public/images-src/ and IS committed.
+public/images/hero/*
+public/images/products/*
+public/images/services/*
+!public/images/hero/.gitkeep
+!public/images/products/.gitkeep
+!public/images/services/.gitkeep
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

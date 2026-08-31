@@ -132,10 +132,10 @@ export default function HeroScene({ className }) {
           y1="90"
           x2="300"
           y2="40"
-          stroke="#c6a96b"
+          stroke="#e7c875"
           strokeWidth="0.7"
         />
-        <text x="312" y="40" fontSize="9" fill="#c6a96b">
+        <text x="312" y="40" fontSize="9" fill="#e7c875">
           apex
         </text>
       </g>

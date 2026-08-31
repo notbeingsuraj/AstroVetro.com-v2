@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "./constants";
 import HeroScene from "./visual/HeroScene";
 
 function Hero() {
   const reduce = useReducedMotion();
+  const [heroFailed, setHeroFailed] = useState(false);
 
   const container = {
     hidden: {},
@@ -101,24 +103,24 @@ function Hero() {
           className="relative lg:col-span-5"
         >
           <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-[1.25rem] ring-1 ring-ink/5 shadow-lift lg:max-w-none">
-            {/* real hero photography when present, else scene fallback */}
-            <picture>
-              <source srcSet="/images/hero/hero.webp" type="image/webp" />
-              <source srcSet="/images/hero/hero.jpg" type="image/jpeg" />
-              <img
-                src="/images/hero/hero.jpg"
-                alt="A large crystal composition bathed in warm morning light on an ivory surface"
-                fetchPriority="high"
-                decoding="sync"
-                width="1200"
-                height="1500"
-                className="absolute inset-0 h-full w-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </picture>
-            <HeroScene className="absolute inset-0 h-full w-full" />
+            {!heroFailed ? (
+              <picture>
+                <source srcSet="/images/hero/hero.webp" type="image/webp" />
+                <source srcSet="/images/hero/hero.jpg" type="image/jpeg" />
+                <img
+                  src="/images/hero/hero.jpg"
+                  alt="A large crystal composition bathed in warm morning light on an ivory surface"
+                  fetchPriority="high"
+                  decoding="sync"
+                  width="1200"
+                  height="1500"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  onError={() => setHeroFailed(true)}
+                />
+              </picture>
+            ) : (
+              <HeroScene className="absolute inset-0 h-full w-full" />
+            )}
           </div>
         </motion.div>
       </div>

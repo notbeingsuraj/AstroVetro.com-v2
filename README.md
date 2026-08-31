@@ -1,12 +1,11 @@
-# AstroVetro — Find what resonates.
+# AstroVetro — Find what feels like you.
 
-A bright, modern, premium landing page for AstroVetro — a brand at the
-intersection of crystals, spiritual practice, self-discovery, nature and the
-cosmos.
+A bright, optimistic, luxurious, contemporary landing page for AstroVetro — a
+brand at the intersection of luxury, cosmos, science, nature, spirituality and
+self-discovery.
 
-Inspired by the visual confidence of Apple, **without copying it**: light,
-airy, editorial, conversion-focused. The site feels like sunlight entering a
-modern gallery — modern spirituality meeting the precision of astrophysics.
+The site feels like sunlight entering a modern gallery: bright, editorial,
+conversion-focused. Modern spirituality meeting the precision of science.
 
 ## Tech Stack
 
@@ -20,21 +19,27 @@ All brand tokens are defined in `src/index.css` under `@theme`:
 
 | Token | Value |
 |-------|-------|
-| `--color-ivory` | `#faf9f5` (primary background) |
-| `--color-stone-soft` | `#f1eee7` |
-| `--color-ink` | `#171717` (text) |
-| `--color-ink-soft` | `#68645d` (secondary text) |
-| `--color-celestial` | `#9ec7e3` |
-| `--color-mineral` | `#a9c5ae` |
-| `--color-solar` | `#e6c875` |
-| `--color-lavender` | `#c9bde0` |
-| `--color-coral` | `#d99a82` |
-| `--color-champagne` | `#c6a96b` |
+| `--color-ivory` | `#fbfaf6` (dominant background) |
+| `--color-pearl` | `#f7f5ef` (secondary surface) |
+| `--color-white` | `#ffffff` (cards, frames) |
+| `--color-sand` | `#ede7da` (divider tints) |
+| `--color-ink` | `#181817` (text primary) |
+| `--color-ink-soft` | `#6d6a63` (text secondary) |
+| `--color-celestial` | `#a9d7f2` (accent) |
+| `--color-aqua` | `#a9ddd2` (accent) |
+| `--color-sage` | `#b8d2b6` (accent) |
+| `--color-solar` | `#e7c875` (accent) |
+| `--color-peach` | `#f2b99e` (accent) |
+| `--color-coral` | `#e99d8c` (accent) |
+| `--color-lavender` | `#cec3e7` (accent) |
+| `--color-destructive` | `#c4553f` (destructive only) |
 
-Typography: **Instrument Serif** (display) + **Manrope** (sans).
+Typography: **Instrument Serif** (display) + **Manrope** (sans). Exactly two
+weights max (400 regular, 600 semibold).
 
-Palette ratio: ~80% whites/creams/neutrals, ~20% subtle celestial & mineral
-accents.
+Palette ratio: **60/30/10** — mostly ivory/white/charcoal, with the seven
+tonal accents reserved for targeted "moments of emotion" (intention discovery,
+fine rules, image grading, hover washes) rather than covering every surface.
 
 ## Components
 
