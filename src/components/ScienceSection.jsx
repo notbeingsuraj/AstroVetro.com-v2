@@ -105,7 +105,7 @@ function ScienceSection() {
             <br />
             STRANGER THAN
             <br />
-            <span className="italic text-haldi">FICTION.</span>
+            <span className="italic text-haldi-light">FICTION.</span>
           </motion.h2>
         </div>
 
@@ -141,25 +141,25 @@ function ScienceSection() {
             {/* Scientific facts */}
             <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10 sm:grid-cols-4">
               <div>
-                <span className="font-display text-4xl text-sky block mb-2">102</span>
+                <span className="font-display text-4xl text-ganges-light block mb-2">102</span>
                 <p className="text-sm text-white/50">Crystal structures known</p>
               </div>
               <div>
-                <span className="font-display text-4xl text-solar block mb-2">~4.5</span>
+                <span className="font-display text-4xl text-haldi-light block mb-2">~4.5</span>
                 <p className="text-sm text-white/50">Billion years old — Earth</p>
               </div>
               <div>
-                <span className="font-display text-4xl text-mint block mb-2">SiO₂</span>
+                <span className="font-display text-4xl text-mayura-light block mb-2">SiO₂</span>
                 <p className="text-sm text-white/50">Quartz composition</p>
               </div>
               <div>
-                <span className="font-display text-4xl text-coral block mb-2">200+</span>
+                <span className="font-display text-4xl text-kesari block mb-2">200+</span>
                 <p className="text-sm text-white/50">Crystal varieties</p>
               </div>
             </div>
 
             {/* Responsibility note */}
-            <div className="mt-10 border-l-2 border-accent-blue pl-6">
+            <div className="mt-10 border-l-2 border-mayura-light pl-6">
               <p className="text-sm text-white/40">
                 AstroVetro celebrates the natural world and its beauty. We do
                 not claim that minerals can cure disease, change physical
