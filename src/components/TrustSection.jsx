@@ -2,24 +2,20 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const TRUST = [
   {
-    title: "Carefully selected",
+    title: "Thoughtfully selected",
     text: "Every piece is chosen by hand for quality, clarity and character.",
-    color: "#A7DFFF",
   },
   {
-    title: "Thoughtfully sourced",
-    text: "We work with suppliers who respect the people and places behind each stone.",
-    color: "#BDF5D0",
-  },
-  {
-    title: "Securely packaged",
+    title: "Carefully packaged",
     text: "Crystals arrive protected, presented and ready to be carried.",
-    color: "#FFE66D",
   },
   {
-    title: "Transparent guidance",
-    text: "No false claims. Honest, grounded, practical perspective.",
-    color: "#D9C2FF",
+    title: "Secure checkout",
+    text: "Encrypted payment processing keeps your details safe.",
+  },
+  {
+    title: "Transparent information",
+    text: "Honest product descriptions. No false claims. Grounded perspective.",
   },
 ];
 
@@ -28,6 +24,7 @@ function TrustSection() {
 
   return (
     <section
+      id="trust"
       className="relative overflow-hidden bg-ivory py-32 lg:py-48"
       aria-label="Why choose AstroVetro"
     >
@@ -37,11 +34,11 @@ function TrustSection() {
           <h2 className="font-display text-display-md text-ink">
             THOUGHTFULLY CHOSEN.
             <br />
-            <span className="italic text-mayura">INTENTIONALLY OFFERED.</span>
+            <span className="italic text-electric-lilac">INTENTIONALLY OFFERED.</span>
           </h2>
         </div>
 
-        {/* Horizontal scrolling trust strip */}
+        {/* Trust points in a horizontal row */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST.map((item, i) => (
             <motion.div
@@ -51,12 +48,12 @@ function TrustSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.08, duration: 0.6 }}
               className="relative border-t-2 pt-8"
-              style={{ borderColor: item.color }}
+              style={{ borderColor: "rgba(23,19,29,0.1)" }}
             >
-              <span className="text-micro text-ink/40 mb-6 block">
+              <span className="text-micro text-text-muted mb-6 block">
                 0{i + 1}
               </span>
-              <h3 className="font-display text-2xl text-ink mb-4">
+              <h3 className="font-semibold text-sm text-ink mb-4">
                 {item.title}
               </h3>
               <p className="text-sm leading-relaxed text-text-secondary">

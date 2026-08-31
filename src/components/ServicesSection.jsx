@@ -2,26 +2,11 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import services from "../data/services";
 import { TarotScene } from "./visual/ServiceVisual";
+import ProductImage from "./visual/ProductImage";
 
-const SERVICE_COLORS = {
-  "tarot-reading": "#D9C2FF",
-  "personal-guidance": "#FFE7D6",
-  "intuitive-reading": "#A7DFFF",
-  "relationship-reading": "#FF8F70",
-};
-
-const SCENES = {
-  "tarot-reading": TarotScene,
-  "personal-guidance": TarotScene,
-  "intuitive-reading": TarotScene,
-  "relationship-reading": TarotScene,
-};
-
-function ServiceCard({ service, index }) {
+function ServiceCard({ service, index, isFeatured = false }) {
   const reduce = useReducedMotion();
   const [failed, setFailed] = useState(false);
-  const color = SERVICE_COLORS[service.id] || "#D9C2FF";
-  const Scene = SCENES[service.id] || TarotScene;
 
   return (
     <motion.article
@@ -33,7 +18,7 @@ function ServiceCard({ service, index }) {
     >
       {/* Image area — real photography w/ editorial scene fallback */}
       <div className="relative overflow-hidden">
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-gauri">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-ivory">
           {!failed ? (
             <picture className="absolute inset-0 h-full w-full">
               <source srcSet={service.image} type="image/webp" />
@@ -50,31 +35,28 @@ function ServiceCard({ service, index }) {
               />
             </picture>
           ) : (
-            <Scene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+            <TarotScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
           )}
 
           {/* Hover overlay */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-shyama/0 opacity-0 transition-all duration-300 group-hover:bg-shyama/10 group-hover:opacity-100">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gauri/95 text-shyama shadow-soft transition-transform duration-300 group-hover:scale-110">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/10 group-hover:opacity-100">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ivory/95 text-ink shadow-soft transition-transform duration-300 group-hover:scale-110">
               →
             </span>
           </div>
         </div>
 
         {/* Floating badge */}
-        <div 
-          className="absolute left-4 top-4 px-3 py-1.5"
-          style={{ backgroundColor: color }}
-        >
-          <span className="text-micro text-ink">{service.format}</span>
+        <div className="absolute left-4 top-4 px-3 py-1.5 bg-ink">
+          <span className="text-micro text-ivory">{service.format}</span>
         </div>
       </div>
 
       {/* Metadata */}
       <div className="mt-6 flex flex-1 flex-col">
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="font-display text-3xl text-shyama">{service.name}</h3>
-          <p className="shrink-0 font-display text-2xl text-shyama">₹{service.price}</p>
+          <h3 className="font-display text-3xl text-ink">{service.name}</h3>
+          <p className="shrink-0 font-display text-2xl text-ink">₹{service.price}</p>
         </div>
 
         <p className="mt-3 text-sm text-text-secondary">{service.duration}</p>
@@ -85,7 +67,7 @@ function ServiceCard({ service, index }) {
 
         <a
           href="#"
-          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-shyama transition-colors hover:text-mayura"
+          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-electric-lilac"
         >
           Book a Reading
           <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
@@ -100,36 +82,38 @@ function ServicesSection() {
   const [featuredFailed, setFeaturedFailed] = useState(false);
   const featured = services.find((s) => s.featured) || services[0];
   const others = services.filter((s) => s.id !== featured.id);
-  const FeaturedScene = SCENES[featured.id] || TarotScene;
 
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-kamala py-32 lg:py-48"
+      className="relative overflow-hidden bg-coral py-32 lg:py-48"
       aria-label="Services and guidance"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-end pt-8 pr-8">
-        <span className="text-section-num text-shyama/[0.03]">09</span>
+        <span className="text-section-num text-ivory/[0.03]">09</span>
       </div>
 
-      {/* Warm gradient wash - kesari */}
+      {/* Tangerine/butter accent washes */}
       <div className="pointer-events-none absolute inset-0" style={{
-        background: "radial-gradient(60% 50% at 20% 0%, rgba(184,107,46,0.12) 0%, transparent 70%)",
+        background: "radial-gradient(60% 50% at 20% 0%, rgba(255,138,76,0.12) 0%, transparent 70%)",
+      }} />
+      <div className="pointer-events-none absolute inset-0" style={{
+        background: "radial-gradient(50% 40% at 80% 100%, rgba(255,230,109,0.1) 0%, transparent 70%)",
       }} />
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-20 lg:mb-32">
-          <span className="text-micro text-shyama/50 mb-6 block">09 — The Readings</span>
-          <h2 className="font-display text-display-lg text-shyama">
-            ASK A
+          <span className="text-micro text-ink/50 mb-6 block">09 — The Readings</span>
+          <h2 className="font-display text-display-lg text-ink">
+            ASK
             <br />
-            <span className="italic text-kumkum">BETTER</span>
+            <span className="italic text-tangerine">A BETTER</span>
             <br />
             QUESTION.
           </h2>
-          <p className="mt-8 max-w-lg text-lg leading-relaxed text-text-secondary">
+          <p className="mt-8 max-w-lg text-lg leading-relaxed text-ink/70">
             Sometimes you need something to carry. Sometimes you need a new
             perspective. Our readings are intimate, reflective and deeply
             personal — online, from wherever you are.
@@ -148,9 +132,9 @@ function ServicesSection() {
           >
             <motion.article
               whileHover={reduce ? {} : { y: -8 }}
-              className="group relative flex h-full flex-col overflow-hidden bg-gauri shadow-lift"
+              className="group relative flex h-full flex-col overflow-hidden bg-ivory shadow-lift"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gauri">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-ivory">
                 {!featuredFailed ? (
                   <picture className="absolute inset-0 h-full w-full">
                     <source srcSet={featured.image} type="image/webp" />
@@ -167,26 +151,21 @@ function ServicesSection() {
                     />
                   </picture>
                 ) : (
-                  <FeaturedScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <TarotScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
                 )}
-
-                <div className="absolute left-4 top-4 px-3 py-1.5" style={{ backgroundColor: SERVICE_COLORS[featured.id] }}>
-                  <span className="text-micro text-ink">FEATURED</span>
-                </div>
               </div>
-
-              <div className="flex flex-1 flex-col p-8">
+              <div className="mt-6 flex flex-1 flex-col p-6">
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-4xl text-shyama">{featured.name}</h3>
-                  <p className="shrink-0 font-display text-3xl text-shyama">₹{featured.price}</p>
+                  <h3 className="font-display text-4xl text-ink">{featured.name}</h3>
+                  <p className="shrink-0 font-display text-3xl text-ink">₹{featured.price}</p>
                 </div>
-                <p className="mt-3 text-sm text-text-secondary">{featured.duration} · {featured.format}</p>
-                <p className="mt-5 flex-1 text-pretty leading-relaxed text-text-secondary">
+                <p className="mt-3 text-sm text-text-secondary">{featured.duration}</p>
+                <p className="mt-4 flex-1 text-pretty text-base leading-relaxed text-text-secondary">
                   {featured.description}
                 </p>
                 <a
                   href="#"
-                  className="group/link mt-8 inline-flex items-center justify-center gap-2 bg-shyama px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-shyama-deep"
+                  className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-electric-lilac"
                 >
                   Book a Reading
                   <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
@@ -195,12 +174,10 @@ function ServicesSection() {
             </motion.article>
           </motion.div>
 
-          {/* Other services */}
-          <div className="grid gap-12 sm:grid-cols-2 lg:col-span-2 lg:gap-16">
-            {others.map((service, i) => (
-              <ServiceCard key={service.id} service={service} index={i} />
-            ))}
-          </div>
+          {/* Other services — smaller, compact */}
+          {others.map((service, i) => (
+            <ServiceCard key={service.id} service={service} index={i} />
+          ))}
         </div>
       </div>
     </section>
