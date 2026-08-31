@@ -36,34 +36,34 @@ function ProductGrid({ activeIntentionId }) {
   return (
     <section
       id="collection"
-      className="relative overflow-hidden bg-ivory py-32 lg:py-48"
+      className="relative overflow-hidden bg-dugdha py-32 lg:py-48"
       aria-label="Product collection"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-end justify-end pr-8 pb-8">
-        <span className="text-section-num text-ink/[0.04]">05</span>
+        <span className="text-section-num text-shyama/[0.03]">05</span>
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-16">
-          <span className="text-micro text-ink/50 mb-6 block">05 — The Objects</span>
+          <span className="text-micro text-shyama/50 mb-6 block">05 — The Objects</span>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-display-md text-ink">
+            <h2 className="font-display text-display-md text-shyama">
               OBJECTS WITH
               <br />
               <span className="italic text-mayura">ENERGY.</span>
             </h2>
             {active && (
               <p className="text-lg text-text-secondary">
-                Viewing: <span className="font-semibold text-ink">{active.title}</span>
+                Viewing: <span className="font-semibold text-shyama">{active.title}</span>
               </p>
             )}
           </div>
         </div>
 
         {/* Category navigation — giant typography */}
-        <div className="mb-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-b border-ink/10 pb-8">
+        <div className="mb-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-b border-shyama/8 pb-8">
           {CATEGORIES.map((cat) => (
             <motion.button
               key={cat.label}
@@ -76,7 +76,7 @@ function ProductGrid({ activeIntentionId }) {
                 className={`font-display text-2xl transition-colors duration-300 sm:text-3xl ${
                   category === cat.id
                     ? "text-mayura"
-                    : "text-ink/50 group-hover:text-ink"
+                    : "text-text-secondary group-hover:text-shyama"
                 }`}
               >
                 {cat.label}
@@ -94,7 +94,7 @@ function ProductGrid({ activeIntentionId }) {
             <button
               type="button"
               onClick={() => document.getElementById("intentions")?.scrollIntoView({ behavior: "smooth" })}
-              className="ml-auto text-sm font-semibold text-ink/60 underline decoration-accent-blue decoration-2 underline-offset-4 transition-colors hover:text-ink"
+              className="ml-auto text-sm font-semibold text-text-secondary underline decoration-kesari decoration-2 underline-offset-4 transition-colors hover:text-shyama"
             >
               Show all pieces
             </button>

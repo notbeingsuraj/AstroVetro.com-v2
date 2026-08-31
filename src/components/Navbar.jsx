@@ -16,21 +16,21 @@ const RIGHT_ACTIONS = [
 
 // Section color mapping for dynamic navbar background (matches actual section bg)
 const SECTION_COLORS = {
-  top: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  hero: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  brand: { bg: "rgba(167,223,255,0.95)", text: "#11131A" },
-  intentions: { bg: "rgba(255,230,109,0.95)", text: "#11131A" },
-  featured: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  collection: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  science: { bg: "rgba(17,19,26,0.95)", text: "#FFFDF7" },
-  interlude: { bg: "rgba(189,245,208,0.95)", text: "#11131A" },
-  guidance: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  services: { bg: "rgba(255,231,214,0.95)", text: "#11131A" },
-  experience: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  trust: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  testimonials: { bg: "rgba(255,231,214,0.95)", text: "#11131A" },
-  journal: { bg: "rgba(255,253,247,0.95)", text: "#11131A" },
-  final: { bg: "rgba(17,19,26,0.95)", text: "#FFFDF7" },
+  top: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  hero: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  brand: { bg: "rgba(216,226,224,0.95)", text: "#1A1815" },
+  intentions: { bg: "rgba(240,228,211,0.95)", text: "#1A1815" },
+  featured: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  collection: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  science: { bg: "rgba(20,18,16,0.95)", text: "#F5F0E8" },
+  interlude: { bg: "rgba(216,226,224,0.95)", text: "#1A1815" },
+  guidance: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  services: { bg: "rgba(237,228,224,0.95)", text: "#1A1815" },
+  experience: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  trust: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  testimonials: { bg: "rgba(232,226,213,0.95)", text: "#1A1815" },
+  journal: { bg: "rgba(250,246,240,0.95)", text: "#1A1815" },
+  final: { bg: "rgba(20,18,16,0.95)", text: "#F5F0E8" },
 };
 
 function Navbar() {
@@ -215,7 +215,7 @@ function Navbar() {
             </nav>
 
             {/* Decorative gradient at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-accent-blue/20 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-kesari/20 to-transparent pointer-events-none" />
           </motion.div>
         )}
       </AnimatePresence>

@@ -128,18 +128,18 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-text-primary);
-  background: var(--color-ivory);
-  letter-spacing: 0.01em;
+  background: var(--color-dugdha);
+  letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  line-height: 1.5;
-  font-feature-settings: "kern";
+  line-height: 1.6;
+  font-feature-settings: "kern", "liga", "clig";
 }
 
 ::selection {
   background: var(--color-haldi);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 
 /* Thin, refined scrollbar */
@@ -147,12 +147,12 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-ivory);
+  background: var(--color-dugdha);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-text-muted);
   border-radius: 999px;
-  border: 2px solid var(--color-ivory);
+  border: 2px solid var(--color-dugdha);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-mayura);
@@ -162,6 +162,9 @@ body {
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+  }
+  .font-devanagari {
+    font-family: var(--font-devanagari);
   }
 
   .text-balance {
@@ -175,31 +178,31 @@ body {
   /* Display sizes — HUGE editorial headlines */
   .text-display-xl {
     font-size: clamp(3.5rem, 8vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
   }
 
   .text-display-lg {
     font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: 1;
-    letter-spacing: -0.015em;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
   }
 
   .text-display-md {
     font-size: clamp(2rem, 4vw, 4rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    line-height: 1.0;
+    letter-spacing: -0.015em;
   }
 
   .text-display-sm {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    line-height: 1.1;
+    line-height: 1.05;
   }
 
   /* Editorial micro-label */
   .text-micro {
     font-size: 10px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
   }
@@ -209,7 +212,7 @@ body {
     font-size: clamp(4rem, 10vw, 10rem);
     font-family: var(--font-display);
     line-height: 1;
-    opacity: 0.06;
+    opacity: 0.04;
   }
 }
 
@@ -222,5 +225,23 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Preload fonts */
+@layer base {
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/cormorantgaramond/v16/co3DmWZ8kjZuErj9Ta3do6TxE45L.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/dmsans/v21/rP2Hp2ywxg089UriCZOIHQ.woff2') format('woff2');
   }
 }

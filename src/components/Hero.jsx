@@ -64,7 +64,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen overflow-hidden bg-ivory"
+      className="relative min-h-screen overflow-hidden bg-dugdha"
       aria-label="AstroVetro introduction"
     >
       {/* Cursor-following glow */}
@@ -72,7 +72,7 @@ function Hero() {
         <div
           className="pointer-events-none absolute inset-0 opacity-30 transition-opacity duration-700"
           style={{
-            background: `radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(167,223,255,0.15), transparent 60%)`,
+            background: `radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(45,90,88,0.15), transparent 60%)`,
           }}
         />
       )}
@@ -82,7 +82,7 @@ function Hero() {
         initial={reduce ? {} : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -right-32 top-0 h-[60vh] w-[40vw] rounded-full bg-peacock/60 blur-[110px]"
+        className="absolute -right-32 top-0 h-[60vh] w-[40vw] rounded-full bg-neela/60 blur-[110px]"
       />
 
       {/* Turmeric-gold glow */}
@@ -90,17 +90,17 @@ function Hero() {
         initial={reduce ? {} : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
-        className="absolute -left-20 top-1/3 h-80 w-80 rounded-full bg-sand/60 blur-[90px]"
+        className="absolute -left-20 top-1/3 h-80 w-80 rounded-full bg-tamra/60 blur-[90px]"
       />
 
       {/* Grid lines — architectural drafting background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(to right, var(--color-ink) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--color-ink) 1px, transparent 1px)
+            linear-gradient(to right, var(--color-shyama) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-shyama) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px',
+          backgroundSize: '100px 100px',
         }} />
       </div>
 
@@ -124,10 +124,10 @@ function Hero() {
 
           {/* MASSIVE headline */}
           <motion.h1 variants={fadeUp} className="mb-8">
-            <span className="block font-display text-display-xl text-ink">
+            <span className="block font-display text-display-xl text-shyama">
               THE EARTH
             </span>
-            <span className="block font-display text-display-xl text-ink">
+            <span className="block font-display text-display-xl text-shyama">
               LEFT SOMETHING
             </span>
             <span className="block font-display text-display-xl italic text-kesari">
@@ -151,7 +151,7 @@ function Hero() {
           >
             <a
               href="#collection"
-              className="group inline-flex items-center justify-center gap-3 bg-ink px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-ink-deep hover:shadow-lift"
+              className="group inline-flex items-center justify-center gap-3 bg-shyama px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-shyama-deep hover:shadow-lift"
             >
               Explore the Collection
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -160,7 +160,7 @@ function Hero() {
             </a>
             <a
               href="#services"
-              className="group inline-flex items-center justify-center gap-3 border-2 border-ink/15 px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink/40"
+              className="group inline-flex items-center justify-center gap-3 border-2 border-shyama/15 px-10 py-5 text-sm font-semibold text-shyama transition-all duration-300 hover:border-shyama/40"
             >
               Explore Readings
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -174,7 +174,7 @@ function Hero() {
             variants={slideFromRight}
             className="absolute -right-8 top-0 hidden lg:block"
           >
-            <span className="block font-display text-[120px] leading-none text-ink/[0.04]">
+            <span className="block font-display text-[120px] leading-none text-shyama/[0.03]">
               01
             </span>
           </motion.div>
@@ -191,7 +191,7 @@ function Hero() {
           {/* Main image container */}
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] md:max-w-[500px] lg:ml-auto lg:max-w-[520px]">
             {/* Background color block */}
-            <div className="absolute inset-4 bg-peacock/40" />
+            <div className="absolute inset-4 bg-neela/40" />
             
             {/* Image with clip-path reveal */}
             <motion.div
@@ -226,7 +226,7 @@ function Hero() {
               initial={reduce ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute left-0 top-12 bg-ink px-4 py-2"
+              className="absolute left-0 top-12 bg-shyama px-4 py-2"
             >
               <span className="text-micro text-white">NATURAL · MINERAL</span>
             </motion.div>
@@ -237,19 +237,19 @@ function Hero() {
               transition={{ delay: 1.4, duration: 0.8 }}
               className="absolute right-0 bottom-24 bg-white px-4 py-2 shadow-soft"
             >
-              <span className="text-micro text-ink">ETHICALLY SOURCED</span>
+              <span className="text-micro text-shyama">ETHICALLY SOURCED</span>
             </motion.div>
 
             {/* Orbital decorative element */}
             <motion.div
               animate={reduce ? {} : { rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-ink/10"
+              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-shyama/8"
             />
             <motion.div
               animate={reduce ? {} : { rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-mayura/25"
+              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-mayura/20"
             />
           </div>
         </motion.div>
@@ -268,7 +268,7 @@ function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span className="text-micro text-text-muted">Scroll</span>
-          <div className="h-12 w-px bg-ink/20" />
+          <div className="h-12 w-px bg-shyama/15" />
         </motion.div>
       </motion.div>
     </section>
