@@ -5,19 +5,19 @@ const STEPS = [
     number: "01",
     title: "Bring your question.",
     text: "A decision, a hesitation, something on your mind. Start wherever you are.",
-    color: "#B48CE8",
+    color: "#C87A3E",  /* kesari */
   },
   {
     number: "02",
     title: "Explore the cards.",
     text: "Together we let the cards reflect the shape of what you are carrying.",
-    color: "#4A9ADB",
+    color: "#2D5A58",  /* mayura */
   },
   {
     number: "03",
     title: "Leave with perspective.",
     text: "Walk away with clarity you didn't have before — and room to decide for yourself.",
-    color: "#E5A72E",
+    color: "#A67C2E",  /* haldi */
   },
 ];
 
@@ -25,10 +25,10 @@ function ExperienceSteps() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-32 lg:py-48">
+    <section className="relative overflow-hidden bg-dugdha py-32 lg:py-48">
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-end justify-end pr-8 pb-8">
-        <span className="text-section-num text-ink/[0.03]">09</span>
+        <span className="text-section-num text-shyama/[0.03]">09</span>
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
@@ -39,8 +39,8 @@ function ExperienceSteps() {
           transition={{ duration: 0.8 }}
           className="mb-20 max-w-2xl"
         >
-          <span className="text-micro text-ink/50 mb-6 block">The Reading Experience</span>
-          <h2 className="font-display text-display-md text-ink">
+          <span className="text-micro text-shyama/50 mb-6 block">The Reading Experience</span>
+          <h2 className="font-display text-display-md text-shyama">
             A READING,
             <br />
             <span className="italic text-kesari">THREE STEPS.</span>
@@ -70,7 +70,7 @@ function ExperienceSteps() {
               {/* Decorative line */}
               <div className="mb-8 h-px w-full" style={{ backgroundColor: step.color }} />
 
-              <h3 className="font-display text-3xl text-ink mb-5">
+              <h3 className="font-display text-3xl text-shyama mb-5">
                 {step.title}
               </h3>
               <p className="max-w-sm text-pretty leading-relaxed text-text-secondary">
