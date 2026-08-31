@@ -19,18 +19,18 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
   return (
     <section
       id="intentions"
-      className="relative overflow-hidden bg-chandana py-32 lg:py-48"
+      className="relative overflow-hidden bg-butter-yellow py-32 lg:py-48"
       aria-label="Explore by intention"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-end pr-8 pt-8">
-        <span className="text-section-num text-shyama/[0.03]">03</span>
+        <span className="text-section-num text-ink/[0.03]">03</span>
       </div>
 
       {/* Editorial grid lines */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, var(--color-shyama) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, var(--color-ink) 1px, transparent 1px)`,
           backgroundSize: '100px 100px',
         }} />
       </div>
@@ -38,11 +38,11 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-20 lg:mb-32">
-          <span className="text-micro text-shyama/50 mb-6 block">03 — The Discovery</span>
-          <h2 className="font-display text-display-lg text-shyama">
+          <span className="text-micro text-ink/50 mb-6 block">03 — The Discovery</span>
+          <h2 className="font-display text-display-lg text-ink">
             WHAT ARE YOU
             <br />
-            <span className="italic">LOOKING FOR?</span>
+            <span className="italic text-tangerine">LOOKING FOR?</span>
           </h2>
         </div>
 
@@ -65,14 +65,14 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={reduce ? {} : { scale: 1.02 }}
+                  whileHover={reduce ? {} : { scale: 1.05 }}
                   className="group relative text-left"
                   aria-pressed={isActive}
                 >
                   {/* Color wash on hover */}
                   <motion.div
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: isActive || isHovered ? 0.3 : 0 }}
+                    animate={{ opacity: isActive || isHovered ? 0.35 : 0 }}
                     transition={{ duration: 0.5 }}
                     className="absolute -inset-4 rounded-lg"
                     style={{ backgroundColor: intention.color }}
@@ -80,14 +80,14 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
                   <div className="relative">
                     {/* Intention number */}
-                    <span className="text-micro text-shyama/30 mb-3 block">
+                    <span className="text-micro text-ink/30 mb-3 block">
                       0{i + 1}
                     </span>
 
                     {/* Large intention word */}
                     <motion.span
                       animate={{
-                        color: isActive ? intention.color : "var(--color-shyama)",
+                        color: isActive ? intention.color : "var(--color-ink)",
                       }}
                       transition={{ duration: 0.3 }}
                       className="block font-display text-5xl lg:text-7xl transition-all duration-300"
@@ -132,9 +132,9 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-16 border-t border-shyama/8 pt-12"
+                className="mt-16 border-t border-ink/10 pt-12"
               >
-                <p className="text-micro text-shyama/50 mb-6">
+                <p className="text-micro text-ink/50 mb-6">
                   {matchingProducts.length} {matchingProducts.length === 1 ? "piece" : "pieces"} for{" "}
                   {activeIntention?.title.toLowerCase()}
                 </p>
@@ -151,11 +151,11 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                     >
                       <ProductImage
                         product={product}
-                        ratio="aspect-square"
+                        ratio="square"
                         className="w-full"
                       />
                       <div className="mt-3">
-                        <p className="font-display text-lg text-shyama">{product.name}</p>
+                        <p className="font-display text-lg text-ink">{product.name}</p>
                         <p className="text-micro text-text-muted mt-1">₹{product.price}</p>
                       </div>
                     </motion.a>
@@ -164,7 +164,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
                 <a
                   href="#collection"
-                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-shyama transition-colors hover:text-kesari"
+                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-tangerine"
                 >
                   View all pieces
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -176,7 +176,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
       </div>
 
       {/* Bottom transition */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-dugdha" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-ivory" />
     </section>
   );
 }

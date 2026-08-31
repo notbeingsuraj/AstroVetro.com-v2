@@ -36,34 +36,34 @@ function ProductGrid({ activeIntentionId }) {
   return (
     <section
       id="collection"
-      className="relative overflow-hidden bg-dugdha py-32 lg:py-48"
+      className="relative overflow-hidden bg-ivory py-32 lg:py-48"
       aria-label="Product collection"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-end justify-end pr-8 pb-8">
-        <span className="text-section-num text-shyama/[0.03]">05</span>
+        <span className="text-section-num text-ink/[0.03]">05</span>
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-16">
-          <span className="text-micro text-shyama/50 mb-6 block">05 — The Objects</span>
+          <span className="text-micro text-text-muted mb-6 block">05 — The Objects</span>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-display-md text-shyama">
-              OBJECTS WITH
+            <h2 className="font-display text-display-md text-ink">
+              COLLECTION
               <br />
-              <span className="italic text-mayura">ENERGY.</span>
+              <span className="italic text-aqua">WORTH EXPLORING.</span>
             </h2>
             {active && (
               <p className="text-lg text-text-secondary">
-                Viewing: <span className="font-semibold text-shyama">{active.title}</span>
+                Viewing: <span className="font-semibold text-ink">{active.title}</span>
               </p>
             )}
           </div>
         </div>
 
         {/* Category navigation — giant typography */}
-        <div className="mb-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-b border-shyama/8 pb-8">
+        <div className="mb-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-b border-ink/10 pb-8">
           {CATEGORIES.map((cat) => (
             <motion.button
               key={cat.label}
@@ -75,8 +75,8 @@ function ProductGrid({ activeIntentionId }) {
               <span
                 className={`font-display text-2xl transition-colors duration-300 sm:text-3xl ${
                   category === cat.id
-                    ? "text-mayura"
-                    : "text-text-secondary group-hover:text-shyama"
+                    ? "text-aqua"
+                    : "text-text-secondary group-hover:text-ink"
                 }`}
               >
                 {cat.label}
@@ -85,7 +85,7 @@ function ProductGrid({ activeIntentionId }) {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: category === cat.id ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left bg-mayura"
+                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left bg-aqua"
               />
             </motion.button>
           ))}
@@ -94,12 +94,32 @@ function ProductGrid({ activeIntentionId }) {
             <button
               type="button"
               onClick={() => document.getElementById("intentions")?.scrollIntoView({ behavior: "smooth" })}
-              className="ml-auto text-sm font-semibold text-text-secondary underline decoration-kesari decoration-2 underline-offset-4 transition-colors hover:text-shyama"
+              className="ml-auto text-sm font-semibold text-text-secondary underline decoration-electric-lilac decoration-2 underline-offset-4 transition-colors hover:text-ink"
             >
               Show all pieces
             </button>
           )}
         </div>
+
+        {/* Empty state — when an intention/category yields no products */}
+        {shown.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <h3 className="font-display text-3xl text-ink">Nothing here yet</h3>
+            <p className="mt-3 max-w-sm text-text-secondary">
+              No products match this intention. Choose another to explore.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setCategory(null);
+                document.getElementById("intentions")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-ivory transition-colors hover:bg-deep-plum"
+            >
+              Show all
+            </button>
+          </div>
+        )}
 
         {/* Asymmetric collection grid — museum gallery rhythm */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-12 md:gap-x-8">
