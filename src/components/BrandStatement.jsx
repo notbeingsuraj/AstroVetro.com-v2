@@ -24,18 +24,18 @@ function BrandStatement() {
   return (
     <section
       id="brand"
-      className="relative overflow-hidden bg-tamra py-32 lg:py-48"
+      className="relative overflow-hidden bg-deep-plum py-32 lg:py-48"
       aria-label="Brand statement"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="text-section-num text-shyama/[0.03]">02</span>
+        <span className="text-section-num text-ivory/[0.03]">02</span>
       </div>
 
-      {/* Editorial grid lines */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
+      {/* Editorial grid lines — subtle */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, var(--color-shyama) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, var(--color-electric-lilac) 1px, transparent 1px)`,
           backgroundSize: '120px 120px',
         }} />
       </div>
@@ -46,35 +46,47 @@ function BrandStatement() {
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
         style={{ scale }}
-        className="relative mx-auto max-w-6xl px-6 text-center lg:px-16"
+        className="relative mx-auto max-w-6xl px-6 lg:px-16"
       >
         {/* Section label */}
         <motion.div variants={fadeUp} className="mb-12">
-          <span className="text-micro text-shyama/50">02 — The Manifesto</span>
+          <span className="text-micro text-ivory/50">02 — The Manifesto</span>
         </motion.div>
 
-        {/* MASSIVE editorial statement */}
-        <motion.h2 variants={fadeUp} className="mb-16">
-          <span className="block font-display text-display-xl text-shyama">
+        {/* MASSIVE editorial statement — asymmetric, left-aligned */}
+        <motion.h2 variants={fadeUp} className="mb-16 max-w-3xl">
+          <span className="block font-display text-display-xl text-ivory">
             WE ARE
           </span>
-          <span className="block font-display text-display-xl text-shyama">
+          <span className="block font-display text-display-xl text-ivory">
             MADE OF
           </span>
-          <span className="block font-display text-display-xl text-shyama">
+          <span className="block font-display text-display-xl text-electric-lilac">
             THE SAME
           </span>
-          <span className="block font-display text-display-xl text-shyama">
-            MATTER AS
+          <span className="block font-display text-display-xl text-ivory">
+            MATTER
           </span>
-          <span className="block font-display text-display-xl italic text-kesari">
-            THE STARS.
+          <span className="block font-display text-display-xl text-ivory">
+            AS THE
+          </span>
+          <span className="block font-display text-display-xl italic text-electric-lilac">
+            STARS.
           </span>
         </motion.h2>
 
-        {/* Supporting copy — narrow editorial column */}
-        <motion.div variants={fadeUp} className="mx-auto max-w-lg">
-          <p className="text-lg leading-relaxed text-text-secondary">
+        {/* Thin decorative line extending to the right */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 h-px w-full origin-left bg-electric-lilac/20"
+        />
+
+        {/* Supporting copy — narrow editorial column, left-aligned */}
+        <motion.div variants={fadeUp} className="max-w-lg">
+          <p className="text-lg leading-relaxed text-ivory/70">
             Every crystal began as silence and pressure. Every reading begins as
             a question. AstroVetro exists at the meeting point — where earth
             meets intention.
@@ -89,8 +101,8 @@ function BrandStatement() {
           transition={{ delay: 0.5, duration: 1 }}
           className="absolute -left-8 top-1/4 hidden lg:block"
         >
-          <div className="h-32 w-px bg-shyama/15" />
-          <span className="mt-4 block text-micro text-shyama/30">EST. 2024</span>
+          <div className="h-32 w-px bg-electric-lilac/30" />
+          <span className="mt-4 block text-micro text-ivory/40">EST. 2024</span>
         </motion.div>
 
         <motion.div
@@ -100,8 +112,8 @@ function BrandStatement() {
           transition={{ delay: 0.7, duration: 1 }}
           className="absolute -right-8 bottom-1/4 hidden lg:block"
         >
-          <div className="h-32 w-px bg-ink/20" />
-          <span className="mt-4 block text-micro text-ink/40">CRYSTALS · READINGS</span>
+          <div className="h-32 w-px bg-electric-lilac/30" />
+          <span className="mt-4 block text-micro text-ivory/40">CRYSTALS · READINGS</span>
         </motion.div>
       </motion.div>
 

@@ -7,10 +7,10 @@ function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [heroFailed, setHeroFailed] = useState(false);
   const { scrollY } = useScroll();
-  
+
   // Parallax transforms
-  const imageY = useTransform(scrollY, [0, 500], [0, 150]);
-  const textY = useTransform(scrollY, [0, 500], [0, -50]);
+  const imageY = useTransform(scrollY, [0, 500], [0, 120]);
+  const textY = useTransform(scrollY, [0, 500], [0, -40]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   // Cursor-following glow (desktop only)
@@ -26,79 +26,64 @@ function Hero() {
     return () => window.removeEventListener("mousemove", handleMouse);
   }, [reduce]);
 
-  // Animation sequence
+  // Entrance sequence: background -> image clip reveal -> headline lines -> metadata -> CTA -> orbital
   const container = {
     hidden: {},
     show: {
-      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
     },
   };
 
   const fadeUp = {
-    hidden: reduce ? {} : { opacity: 0, y: 60 },
+    hidden: reduce ? {} : { opacity: 0, y: 50 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   const scaleIn = {
-    hidden: reduce ? {} : { opacity: 0, scale: 0.85 },
+    hidden: reduce ? {} : { opacity: 0, scale: 0.9 },
     show: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
-  const slideFromRight = {
-    hidden: reduce ? {} : { opacity: 0, x: 100 },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const heroWords = ["FIND", "WHAT", "FEELS", "LIKE", "YOU."];
 
   return (
     <section
       id="top"
-      className="relative min-h-screen overflow-hidden bg-dugdha"
+      className="relative min-h-screen overflow-hidden bg-ivory"
       aria-label="AstroVetro introduction"
     >
-      {/* Cursor-following glow */}
+      {/* Cursor-following lilac glow */}
       {!reduce && (
         <div
-          className="pointer-events-none absolute inset-0 opacity-30 transition-opacity duration-700"
+          className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-700"
           style={{
-            background: `radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(45,90,88,0.15), transparent 60%)`,
+            background: `radial-gradient(700px circle at ${mousePos.x}% ${mousePos.y}%, rgba(184,140,255,0.14), transparent 60%)`,
           }}
         />
       )}
 
-      {/* Large color accent block — muted peacock glow */}
+      {/* Electric lilac accent block */}
       <motion.div
         initial={reduce ? {} : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -right-32 top-0 h-[60vh] w-[40vw] rounded-full bg-neela/60 blur-[110px]"
+        transition={{ duration: 1.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute -right-24 top-0 h-[58vh] w-[42vw] rounded-full bg-electric-lilac/25 blur-[110px]"
       />
 
-      {/* Turmeric-gold glow */}
-      <motion.div
-        initial={reduce ? {} : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 1 }}
-        className="absolute -left-20 top-1/3 h-80 w-80 rounded-full bg-tamra/60 blur-[90px]"
-      />
-
-      {/* Grid lines — architectural drafting background */}
+      {/* Fine grid lines — architectural drafting */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(to right, var(--color-shyama) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--color-shyama) 1px, transparent 1px)
+            linear-gradient(to right, var(--color-ink) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-ink) 1px, transparent 1px)
           `,
           backgroundSize: '100px 100px',
         }} />
@@ -115,24 +100,26 @@ function Hero() {
           style={{ y: textY, opacity }}
           className="relative z-10 lg:col-span-6"
         >
-          {/* Micro label */}
+          {/* Micro metadata */}
           <motion.div variants={fadeUp} className="mb-8">
             <span className="text-micro text-text-muted">
-              01 — The Arrival
+              ASTROVETRO / 001 — MINERAL OBJECT — EARTH → COSMOS
             </span>
           </motion.div>
 
-          {/* MASSIVE headline */}
-          <motion.h1 variants={fadeUp} className="mb-8">
-            <span className="block font-display text-display-xl text-shyama">
-              THE EARTH
-            </span>
-            <span className="block font-display text-display-xl text-shyama">
-              LEFT SOMETHING
-            </span>
-            <span className="block font-display text-display-xl italic text-kesari">
-              FOR YOU.
-            </span>
+          {/* MASSIVE headline — line-by-line */}
+          <motion.h1 className="mb-8">
+            {heroWords.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={reduce ? false : { opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.14, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                className="block font-display text-display-xl text-ink"
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
 
           {/* Supporting copy — narrow editorial column */}
@@ -151,7 +138,7 @@ function Hero() {
           >
             <a
               href="#collection"
-              className="group inline-flex items-center justify-center gap-3 bg-shyama px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-shyama-deep hover:shadow-lift"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-ink px-10 py-5 text-sm font-semibold text-ivory transition-all duration-300 hover:bg-deep-plum hover:shadow-lift"
             >
               Explore the Collection
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -160,9 +147,9 @@ function Hero() {
             </a>
             <a
               href="#services"
-              className="group inline-flex items-center justify-center gap-3 border-2 border-shyama/15 px-10 py-5 text-sm font-semibold text-shyama transition-all duration-300 hover:border-shyama/40"
+              className="group inline-flex items-center justify-center gap-3 rounded-full border-2 border-ink/15 px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink/40"
             >
-              Explore Readings
+              Discover Readings
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
@@ -171,16 +158,16 @@ function Hero() {
 
           {/* Floating editorial label */}
           <motion.div
-            variants={slideFromRight}
+            variants={fadeUp}
             className="absolute -right-8 top-0 hidden lg:block"
           >
-            <span className="block font-display text-[120px] leading-none text-shyama/[0.03]">
+            <span className="block font-display text-[120px] leading-none text-ink/[0.03]">
               01
             </span>
           </motion.div>
         </motion.div>
 
-        {/* RIGHT: Hero Image Composition */}
+        {/* RIGHT: Hero Image Composition — overlapping */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -190,14 +177,14 @@ function Hero() {
         >
           {/* Main image container */}
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] md:max-w-[500px] lg:ml-auto lg:max-w-[520px]">
-            {/* Background color block */}
-            <div className="absolute inset-4 bg-neela/40" />
+            {/* Background colour block */}
+            <div className="absolute inset-4 bg-electric-lilac/15" />
             
             {/* Image with clip-path reveal */}
             <motion.div
               initial={reduce ? {} : { clipPath: "inset(0 100% 0 0)" }}
               animate={{ clipPath: "inset(0 0% 0 0)" }}
-              transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="relative h-full w-full overflow-hidden"
             >
               {/* Hero crystal image (real photography w/ graceful SVG fallback) */}
@@ -221,35 +208,36 @@ function Hero() {
               )}
             </motion.div>
 
-            {/* Floating editorial labels */}
-            <motion.div
-              initial={reduce ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute left-0 top-12 bg-shyama px-4 py-2"
-            >
-              <span className="text-micro text-white">NATURAL · MINERAL</span>
-            </motion.div>
-
+            {/* Editorial metadata — MINERAL OBJECT */}
             <motion.div
               initial={reduce ? {} : { opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
-              className="absolute right-0 bottom-24 bg-white px-4 py-2 shadow-soft"
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="absolute left-0 top-12 bg-ink px-4 py-2"
             >
-              <span className="text-micro text-shyama">ETHICALLY SOURCED</span>
+              <span className="text-micro text-ivory">NATURAL · MINERAL</span>
+            </motion.div>
+
+            {/* Editorial metadata — EARTH → COSMOS */}
+            <motion.div
+              initial={reduce ? {} : { opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.3, duration: 0.8 }}
+              className="absolute right-0 bottom-24 bg-ivory px-4 py-2 shadow-soft"
+            >
+              <span className="text-micro text-ink">EARTH → COSMOS</span>
             </motion.div>
 
             {/* Orbital decorative element */}
             <motion.div
               animate={reduce ? {} : { rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-shyama/8"
+              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-electric-lilac/25"
             />
             <motion.div
               animate={reduce ? {} : { rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-mayura/20"
+              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-aqua/25"
             />
           </div>
         </motion.div>
@@ -268,7 +256,7 @@ function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span className="text-micro text-text-muted">Scroll</span>
-          <div className="h-12 w-px bg-shyama/15" />
+          <div className="h-12 w-px bg-ink/15" />
         </motion.div>
       </motion.div>
     </section>
