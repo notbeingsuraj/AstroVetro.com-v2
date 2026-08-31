@@ -1,12 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-const MARQUEE_ITEMS = ["ASTROVETRO", "CRYSTALS", "READINGS", "DISCOVERY", "JEWELLERY"];
+const MARQUEE_ITEMS = ["TO CARRY", "TO UNDERSTAND", "TO DISCOVER", "TO WEAR", "TO CONNECT"];
 
 function GuidanceTransition() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-32 lg:py-48">
+    <section id="guidance" className="relative overflow-hidden bg-ivory py-32 lg:py-48">
       {/* Marquee — horizontal moving type */}
       <div className="relative overflow-hidden border-y border-ink/10 py-10 mb-20">
         <motion.div
@@ -21,7 +21,7 @@ function GuidanceTransition() {
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span
               key={i}
-              className="mx-8 font-display text-7xl text-ink/20 lg:text-8xl"
+              className="mx-8 font-display text-6xl text-ink/15 lg:text-7xl"
             >
               {item}
               <span className="mx-8 text-ink/10">•</span>
@@ -42,7 +42,7 @@ function GuidanceTransition() {
         >
           SOMETIMES YOU NEED
           <br />
-          SOMETHING <span className="italic text-kumkum">TO CARRY.</span>
+          SOMETHING <span className="italic text-electric-lilac">TO CARRY.</span>
         </motion.h2>
 
         <motion.h2
@@ -54,7 +54,7 @@ function GuidanceTransition() {
         >
           SOMETIMES YOU NEED
           <br />
-          SOMETHING <span className="italic text-mayura">TO UNDERSTAND.</span>
+          SOMETHING <span className="italic text-aqua">TO UNDERSTAND.</span>
         </motion.h2>
 
         <motion.p
@@ -67,7 +67,7 @@ function GuidanceTransition() {
           Both are a kind of guidance. Both are part of the same journey.
           <a
             href="#services"
-            className="mt-4 block font-semibold text-ink underline decoration-haldi decoration-2 underline-offset-8 transition-colors hover:text-mayura"
+            className="mt-4 block font-semibold text-ink underline decoration-electric-lilac decoration-2 underline-offset-8 transition-colors hover:text-aqua"
           >
             Explore our readings ↓
           </a>

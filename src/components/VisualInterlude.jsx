@@ -7,7 +7,8 @@ function VisualInterlude({ copy = "Made by the earth. Chosen by you." }) {
 
   return (
     <section
-      className="relative overflow-hidden bg-peacock py-32 lg:py-48"
+      id="interlude"
+      className="relative min-h-[60vh] overflow-hidden bg-mint py-32 lg:py-48"
       aria-label="Visual interlude"
     >
       {/* Large background number */}
@@ -61,7 +62,7 @@ function VisualInterlude({ copy = "Made by the earth. Chosen by you." }) {
       </div>
 
       {/* Bottom transition */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-coral/30" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-ivory" />
     </section>
   );
 }
