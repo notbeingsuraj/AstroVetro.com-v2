@@ -12,14 +12,9 @@ dist
 dist-ssr
 *.local
 
-# Generated image derivatives (regenerate via `npm run images`).
-# Source photography lives in public/images-src/ and IS committed.
-public/images/hero/*
-public/images/products/*
-public/images/services/*
-!public/images/hero/.gitkeep
-!public/images/products/.gitkeep
-!public/images/services/.gitkeep
+# Generated image derivatives live under public/images/ and ARE committed
+# (small, ~12-16KB WebP). Regenerate via `npm run images:build` if needed.
+# Full-resolution source photography lives in public/images-src/.
 
 # Editor directories and files
 .vscode/*
