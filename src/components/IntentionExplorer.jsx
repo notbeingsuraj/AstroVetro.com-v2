@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import { EASE } from "./constants";
 import intentions from "../data/intentions";
 import products from "../data/products";
 
@@ -186,32 +185,6 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
       {/* Bottom transition */}
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-ivory" />
-    </section>
-  );
-}
-
-export default IntentionExplorer;
-                        >
-                          {p.name.split(" ")[0]}
-                        </span>
-                      ))}
-                    </div>
-
-                    <span
-                      className={`mt-7 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest ${
-                        isActive ? "text-solar" : "text-ink/60"
-                      } transition-colors group-hover:text-ink`}
-                    >
-                      {isActive ? "Showing" : "Explore"}
-                      <span aria-hidden="true">→</span>
-                    </span>
-                  </div>
-                </button>
-              </FadeIn>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }

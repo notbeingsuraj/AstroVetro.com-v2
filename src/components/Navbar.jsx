@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { EASE } from "./constants";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#collection" },
@@ -38,7 +37,6 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
-  const reduce = useReducedMotion();
   const navRef = useRef(null);
 
   useEffect(() => {

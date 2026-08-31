@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { EASE } from "./constants";
 
 function Hero() {
   const reduce = useReducedMotion();
@@ -277,37 +276,6 @@ function Hero() {
           <div className="h-12 w-px bg-ink/20" />
         </motion.div>
       </motion.div>
-    </section>
-  );
-}
-
-export default Hero;
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: EASE, delay: 0.1 }}
-          className="relative lg:col-span-5"
-        >
-          <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-[1.25rem] ring-1 ring-ink/5 shadow-lift lg:max-w-none">
-            {!heroFailed ? (
-              <picture>
-                <source srcSet="/images/hero/hero.webp" type="image/webp" />
-                <source srcSet="/images/hero/hero.jpg" type="image/jpeg" />
-                <img
-                  src="/images/hero/hero.jpg"
-                  alt="A large crystal composition bathed in warm morning light on an ivory surface"
-                  fetchPriority="high"
-                  decoding="sync"
-                  width="1200"
-                  height="1500"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  onError={() => setHeroFailed(true)}
-                />
-              </picture>
-            ) : (
-              <HeroScene className="absolute inset-0 h-full w-full" />
-            )}
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 }

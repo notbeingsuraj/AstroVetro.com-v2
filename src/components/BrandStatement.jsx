@@ -1,5 +1,4 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { EASE } from "./constants";
 
 function BrandStatement() {
   const reduce = useReducedMotion();

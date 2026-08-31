@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import products from "../data/products";
 import intentions from "../data/intentions";
+import ProductCard from "./ProductCard";
 
 const CATEGORIES = [
   { id: null, label: "All" },

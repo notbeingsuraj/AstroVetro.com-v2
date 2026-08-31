@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { EASE } from "./constants";
 import products from "../data/products";
 
 function ProductFeature() {
