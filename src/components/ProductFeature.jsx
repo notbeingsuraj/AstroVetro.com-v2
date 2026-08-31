@@ -38,12 +38,12 @@ function ProductFeature() {
   return (
     <section
       id="featured"
-      className="relative overflow-hidden bg-ivory py-32 lg:py-48"
+      className="relative overflow-hidden bg-dugdha py-32 lg:py-48"
       aria-label="Featured crystal"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-start pl-8">
-        <span className="text-section-num text-ink/[0.04]">04</span>
+        <span className="text-section-num text-shyama/[0.03]">04</span>
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
@@ -87,7 +87,7 @@ function ProductFeature() {
               )}
 
               {/* Floating label */}
-              <div className="absolute left-0 top-8 bg-ink px-4 py-2">
+              <div className="absolute left-0 top-8 bg-shyama px-4 py-2">
                 <span className="text-micro text-white">FEATURED</span>
               </div>
             </div>
@@ -95,9 +95,9 @@ function ProductFeature() {
 
           {/* RIGHT: Product Story */}
           <motion.div variants={fadeUp} className="order-1 lg:order-2">
-            <span className="text-micro text-ink/50 mb-6 block">04 — The Object</span>
+            <span className="text-micro text-shyama/50 mb-6 block">04 — The Object</span>
             
-            <h2 className="font-display text-display-lg text-ink mb-4">
+            <h2 className="font-display text-display-lg text-shyama mb-4">
               {featured.name}
             </h2>
             
@@ -110,34 +110,34 @@ function ProductFeature() {
             </p>
 
             <div className="mb-8">
-              <span className="font-display text-4xl text-ink">₹{featured.price}</span>
+              <span className="font-display text-4xl text-shyama">₹{featured.price}</span>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <a
                 href="#collection"
-                className="group inline-flex items-center justify-center gap-3 bg-ink px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-ink-deep hover:shadow-lift"
+                className="group inline-flex items-center justify-center gap-3 bg-shyama px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-shyama-deep hover:shadow-lift"
               >
                 View Crystal
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#collection"
-                className="group inline-flex items-center justify-center gap-3 border-2 border-ink/15 px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink/40"
+                className="group inline-flex items-center justify-center gap-3 border-2 border-shyama/15 px-10 py-5 text-sm font-semibold text-shyama transition-all duration-300 hover:border-shyama/40"
               >
                 Shop Now
               </a>
             </div>
 
             {/* Product details */}
-            <div className="mt-12 grid grid-cols-2 gap-6 border-t border-ink/10 pt-8">
+            <div className="mt-12 grid grid-cols-2 gap-6 border-t border-shyama/8 pt-8">
               <div>
-                <span className="text-micro text-ink/50 block mb-2">INTENTION</span>
-                <p className="text-sm text-ink">{featured.intention.join(" · ")}</p>
+                <span className="text-micro text-shyama/50 block mb-2">INTENTION</span>
+                <p className="text-sm text-shyama">{featured.intention.join(" · ")}</p>
               </div>
               <div>
-                <span className="text-micro text-ink/50 block mb-2">CATEGORY</span>
-                <p className="text-sm text-ink capitalize">{featured.category}</p>
+                <span className="text-micro text-shyama/50 block mb-2">CATEGORY</span>
+                <p className="text-sm text-shyama capitalize">{featured.category}</p>
               </div>
             </div>
           </motion.div>

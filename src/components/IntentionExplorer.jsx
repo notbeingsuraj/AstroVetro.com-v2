@@ -132,9 +132,9 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-16 border-t border-ink/10 pt-12"
+                className="mt-16 border-t border-shyama/8 pt-12"
               >
-                <p className="text-micro text-ink/50 mb-6">
+                <p className="text-micro text-shyama/50 mb-6">
                   {matchingProducts.length} {matchingProducts.length === 1 ? "piece" : "pieces"} for{" "}
                   {activeIntention?.title.toLowerCase()}
                 </p>
@@ -155,8 +155,8 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                         className="w-full"
                       />
                       <div className="mt-3">
-                        <p className="font-display text-lg text-ink">{product.name}</p>
-                        <p className="text-micro text-ink/50 mt-1">₹{product.price}</p>
+                        <p className="font-display text-lg text-shyama">{product.name}</p>
+                        <p className="text-micro text-text-muted mt-1">₹{product.price}</p>
                       </div>
                     </motion.a>
                   ))}
@@ -164,7 +164,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
                 <a
                   href="#collection"
-                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-kesari"
+                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-shyama transition-colors hover:text-kesari"
                 >
                   View all pieces
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -176,7 +176,7 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
       </div>
 
       {/* Bottom transition */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-ivory" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-dugdha" />
     </section>
   );
 }

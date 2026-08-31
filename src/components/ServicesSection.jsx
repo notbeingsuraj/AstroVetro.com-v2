@@ -33,7 +33,7 @@ function ServiceCard({ service, index }) {
     >
       {/* Image area — real photography w/ editorial scene fallback */}
       <div className="relative overflow-hidden">
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-gauri">
           {!failed ? (
             <picture className="absolute inset-0 h-full w-full">
               <source srcSet={service.image} type="image/webp" />
@@ -46,16 +46,16 @@ function ServiceCard({ service, index }) {
                 width="800"
                 height="600"
                 onError={() => setFailed(true)}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
             </picture>
           ) : (
-            <Scene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
+            <Scene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
           )}
 
           {/* Hover overlay */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/10 group-hover:opacity-100">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-ink shadow-soft transition-transform duration-300 group-hover:scale-110">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-shyama/0 opacity-0 transition-all duration-300 group-hover:bg-shyama/10 group-hover:opacity-100">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gauri/95 text-shyama shadow-soft transition-transform duration-300 group-hover:scale-110">
               →
             </span>
           </div>
@@ -73,8 +73,8 @@ function ServiceCard({ service, index }) {
       {/* Metadata */}
       <div className="mt-6 flex flex-1 flex-col">
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="font-display text-3xl text-ink">{service.name}</h3>
-          <p className="shrink-0 font-display text-2xl text-ink">₹{service.price}</p>
+          <h3 className="font-display text-3xl text-shyama">{service.name}</h3>
+          <p className="shrink-0 font-display text-2xl text-shyama">₹{service.price}</p>
         </div>
 
         <p className="mt-3 text-sm text-text-secondary">{service.duration}</p>
@@ -85,7 +85,7 @@ function ServiceCard({ service, index }) {
 
         <a
           href="#"
-          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-mayura"
+          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-shyama transition-colors hover:text-mayura"
         >
           Book a Reading
           <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
@@ -105,31 +105,31 @@ function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-lotus py-32 lg:py-48"
+      className="relative overflow-hidden bg-kamala py-32 lg:py-48"
       aria-label="Services and guidance"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-end pt-8 pr-8">
-        <span className="text-section-num text-ink/[0.04]">09</span>
+        <span className="text-section-num text-shyama/[0.03]">09</span>
       </div>
 
       {/* Warm gradient wash - kesari */}
       <div className="pointer-events-none absolute inset-0" style={{
-        background: "radial-gradient(60% 50% at 20% 0%, rgba(200,122,58,0.12) 0%, transparent 70%)",
+        background: "radial-gradient(60% 50% at 20% 0%, rgba(184,107,46,0.12) 0%, transparent 70%)",
       }} />
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-20 lg:mb-32">
-          <span className="text-micro text-ink/60 mb-6 block">09 — The Readings</span>
-          <h2 className="font-display text-display-lg text-ink">
+          <span className="text-micro text-shyama/50 mb-6 block">09 — The Readings</span>
+          <h2 className="font-display text-display-lg text-shyama">
             ASK A
             <br />
             <span className="italic text-kumkum">BETTER</span>
             <br />
             QUESTION.
           </h2>
-          <p className="mt-8 max-w-lg text-lg leading-relaxed text-ink/70">
+          <p className="mt-8 max-w-lg text-lg leading-relaxed text-text-secondary">
             Sometimes you need something to carry. Sometimes you need a new
             perspective. Our readings are intimate, reflective and deeply
             personal — online, from wherever you are.
@@ -148,9 +148,9 @@ function ServicesSection() {
           >
             <motion.article
               whileHover={reduce ? {} : { y: -8 }}
-              className="group relative flex h-full flex-col overflow-hidden bg-white shadow-lift"
+              className="group relative flex h-full flex-col overflow-hidden bg-gauri shadow-lift"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gauri">
                 {!featuredFailed ? (
                   <picture className="absolute inset-0 h-full w-full">
                     <source srcSet={featured.image} type="image/webp" />
@@ -163,11 +163,11 @@ function ServicesSection() {
                       width="800"
                       height="600"
                       onError={() => setFeaturedFailed(true)}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />
                   </picture>
                 ) : (
-                  <FeaturedScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <FeaturedScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
                 )}
 
                 <div className="absolute left-4 top-4 px-3 py-1.5" style={{ backgroundColor: SERVICE_COLORS[featured.id] }}>
@@ -177,8 +177,8 @@ function ServicesSection() {
 
               <div className="flex flex-1 flex-col p-8">
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-4xl text-ink">{featured.name}</h3>
-                  <p className="shrink-0 font-display text-3xl text-ink">₹{featured.price}</p>
+                  <h3 className="font-display text-4xl text-shyama">{featured.name}</h3>
+                  <p className="shrink-0 font-display text-3xl text-shyama">₹{featured.price}</p>
                 </div>
                 <p className="mt-3 text-sm text-text-secondary">{featured.duration} · {featured.format}</p>
                 <p className="mt-5 flex-1 text-pretty leading-relaxed text-text-secondary">
@@ -186,7 +186,7 @@ function ServicesSection() {
                 </p>
                 <a
                   href="#"
-                  className="group/link mt-8 inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-ink-deep"
+                  className="group/link mt-8 inline-flex items-center justify-center gap-2 bg-shyama px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-shyama-deep"
                 >
                   Book a Reading
                   <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
