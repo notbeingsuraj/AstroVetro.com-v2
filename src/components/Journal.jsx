@@ -35,7 +35,7 @@ function Journal() {
           </div>
           <a
             href="#"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-accent-blue"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-mayura"
           >
             All articles
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

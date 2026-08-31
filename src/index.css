@@ -2,58 +2,90 @@
 
 @theme {
   /* ================================================================
-     ASTROVETRO V2 — REFINED VEDIC PALETTE
+     ASTROVETRO V2 — LUXURY VEDIC PALETTE
      ================================================================
-     A calm, cultured palette drawn from Hindu mythology & Sanskrit
-     colour symbolism — muted, earthy, editorial. Not neon.
-     Sourced from: kesari (saffron), kumkum (vermilion), mayura
-     (peacock), haldi (turmeric gold), kamal (lotus), ganges blue,
-     dugdha (milk/ivory), rajanigandha (night-blossom indigo).
+     Deep, rich palette from Hindu cosmology & Sanskrit texts.
+     Sourced from: kesari (saffron fire), kumkum (vermilion), 
+     mayura (peacock), haldi (turmeric gold), raktachandana (red sandalwood),
+     neelotpala (blue lotus), dugdha (milk/ivory), shyama (dark blue-black),
+     gauri (fair/white), tamra (copper/bronze).
      ================================================================ */
 
-  /* ---- DOMINANT (60%) — calm warm neutrals ---- */
-  --color-ivory: #FBF7F0;          /* dugdha — warm milk/ivory */
-  --color-ivory-warm: #F6F0E6;     /* sandalwood tint */
+  /* ---- DOMINANT (65%) — warm, luminous neutrals ---- */
+  --color-dugdha: #FAF6F0;         /* warm milk/ivory — primary bg */
+  --color-gauri: #F5F0E8;          /* fair/white — elevated surfaces */
   --color-white: #FFFFFF;
-  --color-ink: #1C1A17;            /* soft warm black */
-  --color-ink-deep: #14120F;
+  --color-shyama: #141210;         /* deep night — primary text */
+  --color-shyama-deep: #0D0B0A;
 
-  /* ---- SECONDARY (30%) — muted earthy fields ---- */
-  --color-sand: #EDE5D8;           /* soft terracotta sand */
-  --color-almond: #F0E4D3;         /* muted saffron-cream */
-  --color-lotus: #F2DDD5;          /* muted lotus blush */
-  --color-peacock: #DCE7E4;        /* pale peacock-teal */
-  --color-parchment: #E8E2D4;      /* old parchment gold */
+  /* ---- SECONDARY (25%) — rich earthy grounds ---- */
+  --color-tamra: #E8D5C4;          /* copper/bronze sand */
+  --color-chandana: #F2E8DC;       /* sandalwood cream */
+  --color-kamala: #EDE4E0;         /* lotus petal blush */
+  --color-neela: #D8E2E0;          /* blue lotus mist */
+  --color-bhasma: #E0DCD5;         /* sacred ash grey-gold */
 
-  /* ---- ACCENT (10%) — deliberate Vedic moments ---- */
-  --color-kesari: #C87A3A;         /* saffron — muted sacred orange */
-  --color-kesari-deep: #A75E28;
-  --color-kumkum: #A83D3D;         /* vermilion — deep ceremonial red */
-  --color-mayura: #3E6B6A;         /* peacock teal */
-  --color-haldi: #C29A44;          /* turmeric gold */
-  --color-ganges: #5B7F9E;         /* sacred river blue */
-  --color-lotus-deep: #B96A6A;     /* deeper lotus */
+  /* ---- ACCENT (10%) — deliberate sacred moments ---- */
+  --color-kesari: #B86B2E;         /* saffron — deep sacred orange */
+  --color-kesari-deep: #944D1A;
+  --color-kumkum: #8B2E2E;         /* vermilion — ceremonial red */
+  --color-mayura: #2D5A58;         /* peacock feather teal */
+  --color-haldi: #A67C2E;          /* turmeric gold */
+  --color-raktachandana: #7B2D2D;  /* red sandalwood */
+  --color-neelotpala: #3A5A7A;     /* blue lotus indigo */
 
   /* Light accents — for use on dark surfaces only */
-  --color-ganges-light: #9DC3DD;
-  --color-haldi-light: #E6C47A;
-  --color-mayura-light: #7FB3B0;
+  --color-kesari-light: #D4955E;
+  --color-haldi-light: #C8A65E;
+  --color-mayura-light: #5E9E9B;
+  --color-neelotpala-light: #7A9ACC;
 
   /* ---- TEXT ---- */
-  --color-text-primary: #1E1B18;
-  --color-text-secondary: #5C564E;
-  --color-text-muted: #8A8277;
-  --color-text-on-dark: #F6F1E8;
-  --color-text-on-color: #1E1B18;
+  --color-text-primary: #1A1815;
+  --color-text-secondary: #5A534B;
+  --color-text-muted: #887F72;
+  --color-text-on-dark: #F5F0E8;
+  --color-text-on-color: #1A1815;
 
-  /* ---- Destructive (only for destructive actions) ---- */
-  --color-destructive: #A83232;
+  /* ---- Destructive ---- */
+  --color-destructive: #8B2E2E;
 
-  /* ---- TYPOGRAPHY (Apple-like system stack) ---- */
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+  /* ---- TYPOGRAPHY (Vedic luxury: classical serif + geometric sans) ---- */
+  --font-display: "Cormorant Garamond", "Noto Serif Devanagari", Georgia, serif;
+  --font-sans: "DM Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+  --font-devanagari: "Noto Serif Devanagari", serif;
+
+  /* ---- RADIUS (architectural, refined) ---- */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  /* ---- ELEVATION ---- */
+  --shadow-soft: 0 1px 2px rgba(20,18,16,0.04), 0 4px 16px rgba(20,18,16,0.05);
+  --shadow-lift: 0 4px 12px rgba(20,18,16,0.06), 0 20px 48px rgba(20,18,16,0.09);
+  --shadow-glow-kesari: 0 0 60px rgba(184,107,46,0.2);
+  --shadow-glow-haldi: 0 0 60px rgba(166,124,46,0.2);
+  --shadow-glow-mayura: 0 0 60px rgba(45,90,88,0.18);
+
+  /* ---- MOTION ---- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* ---- SPACING SCALE (multiples of 4) ---- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-section: 120px;
+}
 
   /* ---- RADIUS (architectural, minimal) ---- */
   --radius-none: 0;
