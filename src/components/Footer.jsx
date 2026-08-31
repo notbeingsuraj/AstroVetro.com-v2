@@ -117,28 +117,3 @@ function Footer() {
 }
 
 export default Footer;
-        </motion.div>
-
-        {/* Legal */}
-        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} AstroVetro. All rights reserved.
-          </p>
-          <div className="flex gap-8 text-xs text-white/40">
-            <a href="#" className="transition-colors hover:text-white/60">
-              Privacy
-            </a>
-            <a href="#" className="transition-colors hover:text-white/60">
-              Terms
-            </a>
-            <a href="#" className="transition-colors hover:text-white/60">
-              Shipping
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export default Footer;
