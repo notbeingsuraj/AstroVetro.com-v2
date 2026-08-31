@@ -6,7 +6,7 @@ function Testimonials() {
 
   return (
     <section
-      className="relative overflow-hidden bg-peach py-32 lg:py-48"
+      className="relative overflow-hidden bg-parchment py-32 lg:py-48"
       aria-label="Testimonials"
     >
       {/* Large background number */}
@@ -44,7 +44,7 @@ function Testimonials() {
               </span>
 
               <div className="relative border-l-2 pt-6 pl-8" style={{ borderColor: `hsl(${220 + i * 45}, 60%, 70%)` }}>
-                <div className="mb-6 flex gap-1 text-solar" aria-label="5 out of 5 stars">
+                <div className="mb-6 flex gap-1 text-haldi" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, s) => (
                     <span key={s} aria-hidden="true">★</span>
                   ))}

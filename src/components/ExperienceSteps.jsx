@@ -43,7 +43,7 @@ function ExperienceSteps() {
           <h2 className="font-display text-display-md text-ink">
             A READING,
             <br />
-            <span className="italic text-accent-blue">THREE STEPS.</span>
+            <span className="italic text-kesari">THREE STEPS.</span>
           </h2>
         </motion.div>
 

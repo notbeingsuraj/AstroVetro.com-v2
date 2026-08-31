@@ -30,7 +30,7 @@ function Journal() {
           <div>
             <span className="text-micro text-ink/50 mb-6 block">11 — The Journal</span>
             <h2 className="font-display text-display-md text-ink">
-              LOOK <span className="italic text-accent-blue">CLOSER.</span>
+              LOOK <span className="italic text-mayura">CLOSER.</span>
             </h2>
           </div>
           <a
@@ -66,12 +66,12 @@ function Journal() {
 
                 {/* Article text */}
                 <div className="flex flex-col justify-center">
-                  <p className="text-micro text-accent-blue mb-4">{article.tag}</p>
-                  <h3 className="font-display text-3xl leading-tight text-ink transition-colors duration-300 group-hover:text-accent-blue lg:text-4xl">
+                  <p className="text-micro text-mayura mb-4">{article.tag}</p>
+                  <h3 className="font-display text-3xl leading-tight text-ink transition-colors duration-300 group-hover:text-mayura lg:text-4xl">
                     {article.title}
                   </h3>
                   <p className="mt-3 text-sm text-text-secondary">{article.time}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink group-hover:text-accent-blue">
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink group-hover:text-mayura">
                     Read article
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </span>

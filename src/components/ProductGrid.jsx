@@ -52,7 +52,7 @@ function ProductGrid({ activeIntentionId }) {
             <h2 className="font-display text-display-md text-ink">
               OBJECTS WITH
               <br />
-              <span className="italic text-accent-blue">ENERGY.</span>
+              <span className="italic text-mayura">ENERGY.</span>
             </h2>
             {active && (
               <p className="text-lg text-text-secondary">
@@ -75,7 +75,7 @@ function ProductGrid({ activeIntentionId }) {
               <span
                 className={`font-display text-2xl transition-colors duration-300 sm:text-3xl ${
                   category === cat.id
-                    ? "text-accent-blue"
+                    ? "text-mayura"
                     : "text-ink/50 group-hover:text-ink"
                 }`}
               >
@@ -85,7 +85,7 @@ function ProductGrid({ activeIntentionId }) {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: category === cat.id ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left bg-accent-blue"
+                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left bg-mayura"
               />
             </motion.button>
           ))}

@@ -79,7 +79,7 @@ function ProductCard({ product, size = "md", index = 0 }) {
 
       <div className="mt-4 flex items-center justify-between">
         <span className="text-micro text-ink/50 capitalize">{product.category}</span>
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors group-hover:text-accent-blue">
+        <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors group-hover:text-mayura">
           Explore
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>

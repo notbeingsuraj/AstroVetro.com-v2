@@ -191,7 +191,7 @@ function Navbar() {
                   className="group mb-6 flex items-baseline gap-4"
                 >
                   <span className="text-micro text-white/40">0{i + 1}</span>
-                  <span className="font-display text-6xl text-white transition-colors duration-300 group-hover:text-solar">
+                  <span className="font-display text-6xl text-white transition-colors duration-300 group-hover:text-haldi-light">
                     {link.label}
                   </span>
                 </motion.a>

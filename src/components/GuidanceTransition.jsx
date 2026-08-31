@@ -42,7 +42,7 @@ function GuidanceTransition() {
         >
           SOMETIMES YOU NEED
           <br />
-          SOMETHING <span className="italic text-accent-coral">TO CARRY.</span>
+          SOMETHING <span className="italic text-kumkum">TO CARRY.</span>
         </motion.h2>
 
         <motion.h2
@@ -54,7 +54,7 @@ function GuidanceTransition() {
         >
           SOMETIMES YOU NEED
           <br />
-          SOMETHING <span className="italic text-accent-blue">TO UNDERSTAND.</span>
+          SOMETHING <span className="italic text-mayura">TO UNDERSTAND.</span>
         </motion.h2>
 
         <motion.p
@@ -67,7 +67,7 @@ function GuidanceTransition() {
           Both are a kind of guidance. Both are part of the same journey.
           <a
             href="#services"
-            className="mt-4 block font-semibold text-ink underline decoration-solar decoration-2 underline-offset-8 transition-colors hover:text-accent-blue"
+            className="mt-4 block font-semibold text-ink underline decoration-haldi decoration-2 underline-offset-8 transition-colors hover:text-mayura"
           >
             Explore our readings ↓
           </a>

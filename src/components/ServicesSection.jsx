@@ -85,7 +85,7 @@ function ServiceCard({ service, index }) {
 
         <a
           href="#"
-          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-accent-blue"
+          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-mayura"
         >
           Book a Reading
           <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
@@ -105,7 +105,7 @@ function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-peach py-32 lg:py-48"
+      className="relative overflow-hidden bg-lotus py-32 lg:py-48"
       aria-label="Services and guidance"
     >
       {/* Large background number */}
@@ -113,9 +113,9 @@ function ServicesSection() {
         <span className="text-section-num text-ink/[0.04]">09</span>
       </div>
 
-      {/* Warm gradient wash */}
+      {/* Warm gradient wash - kesari */}
       <div className="pointer-events-none absolute inset-0" style={{
-        background: "radial-gradient(60% 50% at 20% 0%, rgba(255,143,112,0.15) 0%, transparent 70%)",
+        background: "radial-gradient(60% 50% at 20% 0%, rgba(200,122,58,0.12) 0%, transparent 70%)",
       }} />
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
@@ -125,7 +125,7 @@ function ServicesSection() {
           <h2 className="font-display text-display-lg text-ink">
             ASK A
             <br />
-            <span className="italic text-accent-coral">BETTER</span>
+            <span className="italic text-kumkum">BETTER</span>
             <br />
             QUESTION.
           </h2>

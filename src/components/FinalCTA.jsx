@@ -14,9 +14,9 @@ function FinalCTA() {
         <span className="text-section-num text-white/[0.04]">12</span>
       </div>
 
-      {/* Accent glows */}
-      <div className="pointer-events-none absolute -left-20 top-0 h-96 w-96 rounded-full bg-accent-blue/[0.08] blur-[100px]" />
-      <div className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-solar/[0.08] blur-[100px]" />
+      {/* Accent glows - kesari + haldi */}
+      <div className="pointer-events-none absolute -left-20 top-0 h-96 w-96 rounded-full bg-kesari/20 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-haldi/20 blur-[100px]" />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-10">
         <span className="text-micro text-white/50 mb-8 block">12 — The Invitation</span>
@@ -30,7 +30,7 @@ function FinalCTA() {
         >
           START WITH WHAT
           <br />
-          <span className="italic text-solar">FEELS LIKE YOU.</span>
+          <span className="italic text-haldi-light">FEELS LIKE YOU.</span>
         </motion.h2>
 
         <motion.p
@@ -53,14 +53,14 @@ function FinalCTA() {
         >
           <a
             href="#collection"
-            className="group inline-flex w-full items-center justify-center gap-3 bg-solar px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-glow-solar sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-3 bg-haldi px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-glow-solar sm:w-auto"
           >
             Explore the Collection
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
           <a
             href="#services"
-            className="group inline-flex w-full items-center justify-center gap-3 border-2 border-white/20 px-10 py-5 text-sm font-semibold text-white transition-colors duration-300 hover:border-solar sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-3 border-2 border-white/20 px-10 py-5 text-sm font-semibold text-white transition-colors duration-300 hover:border-haldi-light sm:w-auto"
           >
             Book a Reading
           </a>
@@ -68,7 +68,7 @@ function FinalCTA() {
       </div>
 
       {/* Bottom transition to footer */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#D9C2FF]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-mayura/30" />
     </section>
   );
 }

@@ -101,7 +101,7 @@ function ProductFeature() {
               {featured.name}
             </h2>
             
-            <p className="font-display text-display-sm italic text-accent-blue mb-8">
+            <p className="font-display text-display-sm italic text-mayura mb-8">
               {featured.tagline}
             </p>
 

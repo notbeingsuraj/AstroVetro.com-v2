@@ -37,7 +37,7 @@ function TrustSection() {
           <h2 className="font-display text-display-md text-ink">
             THOUGHTFULLY CHOSEN.
             <br />
-            <span className="italic text-accent-blue">INTENTIONALLY OFFERED.</span>
+            <span className="italic text-mayura">INTENTIONALLY OFFERED.</span>
           </h2>
         </div>
 

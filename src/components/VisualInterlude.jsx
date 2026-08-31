@@ -7,7 +7,7 @@ function VisualInterlude({ copy = "Made by the earth. Chosen by you." }) {
 
   return (
     <section
-      className="relative overflow-hidden bg-mint py-32 lg:py-48"
+      className="relative overflow-hidden bg-peacock py-32 lg:py-48"
       aria-label="Visual interlude"
     >
       {/* Large background number */}
