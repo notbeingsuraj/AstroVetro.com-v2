@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { EASE } from "./constants";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#collection" },
-  { label: "Services", href: "#services" },
-  { label: "By Intention", href: "#intentions" },
+  { label: "Readings", href: "#services" },
   { label: "Discover", href: "#science" },
   { label: "Journal", href: "#journal" },
+];
+
+const RIGHT_ACTIONS = [
+  { label: "Search", href: "#" },
+  { label: "Account", href: "#" },
+  { label: "Cart", href: "#" },
 ];
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -20,12 +26,20 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-ivory/80 backdrop-blur-md shadow-soft border-b hairline"
-          : "bg-transparent"
+          ? "border-b border-ink/8 bg-ivory/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
@@ -39,7 +53,7 @@ function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
@@ -52,28 +66,16 @@ function Navbar() {
         </div>
 
         {/* Right actions */}
-        <div className="hidden items-center gap-5 lg:flex">
-          <a
-            href="#"
-            className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-            aria-label="Search"
-          >
-            Search
-          </a>
-          <a
-            href="#"
-            className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-            aria-label="Account"
-          >
-            Account
-          </a>
-          <a
-            href="#"
-            className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-            aria-label="Cart"
-          >
-            Cart
-          </a>
+        <div className="hidden items-center gap-6 lg:flex">
+          {RIGHT_ACTIONS.map((action) => (
+            <a
+              key={action.label}
+              href={action.href}
+              className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+            >
+              {action.label}
+            </a>
+          ))}
         </div>
 
         {/* Mobile toggle */}
@@ -101,35 +103,44 @@ function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <motion.div
-        initial={false}
-        animate={
-          open
-            ? { opacity: 1, height: "auto" }
-            : { opacity: 0, height: 0 }
-        }
-        transition={{ duration: 0.4, ease: EASE }}
-        className="overflow-hidden bg-ivory lg:hidden"
-      >
-        <div className="flex flex-col gap-1 px-6 pb-8 pt-2">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="border-b hairline py-4 font-display text-2xl text-ink"
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="mt-6 flex gap-6 text-sm text-ink-soft">
-            <a href="#">Search</a>
-            <a href="#">Account</a>
-            <a href="#">Cart</a>
-          </div>
-        </div>
-      </motion.div>
+      {/* Mobile menu — full-screen editorial overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="fixed inset-0 top-0 z-40 flex flex-col bg-ivory lg:hidden"
+          >
+            <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-8 pb-16">
+              <div className="space-y-2">
+                {[...NAV_LINKS, ...RIGHT_ACTIONS].map((link, i) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    initial={reduce ? false : { opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.06 * i, ease: EASE }}
+                    className="block border-b border-ink/8 py-4 font-display text-4xl text-ink"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </div>
+              <motion.p
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="mt-12 text-sm text-ink-soft"
+              >
+                Shop △ Readings — one brand.
+              </motion.p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

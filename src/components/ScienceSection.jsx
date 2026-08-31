@@ -1,4 +1,4 @@
-import { FadeIn } from "./Motion";
+import { FadeIn, SectionLabel } from "./Motion";
 import EditorialGrid from "./visual/EditorialGrid";
 
 function Lattice() {
@@ -11,12 +11,12 @@ function Lattice() {
     >
       <defs>
         <linearGradient id="lat1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#9ec7e3" />
-          <stop offset="100%" stopColor="#a9c5ae" />
+          <stop offset="0%" stopColor="#a9d7f2" />
+          <stop offset="100%" stopColor="#b8d2b6" />
         </linearGradient>
       </defs>
 
-      <rect x="0" y="0" width="480" height="300" rx="16" fill="#faf9f5" />
+      <rect x="0" y="0" width="480" height="300" rx="8" fill="#fbfaf6" />
 
       {/* faint frame */}
       <g stroke="#181817" strokeWidth="0.4" opacity="0.12">
@@ -72,23 +72,21 @@ function ScienceSection() {
   return (
     <section
       id="science"
-      className="relative bg-white py-24 lg:py-32"
+      className="relative border-t border-ink/8 bg-ivory py-24 lg:py-32"
       aria-label="Science and spirituality"
     >
       <EditorialGrid className="opacity-40" variant="orbits" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <FadeIn className="order-2 lg:order-1">
-            <div className="overflow-hidden rounded-3xl border hairline bg-ivory shadow-soft">
+            <div className="overflow-hidden rounded-md border border-ink/8 bg-white shadow-soft">
               <Lattice />
             </div>
           </FadeIn>
 
           <div className="order-1 lg:order-2">
             <FadeIn>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-champagne">
-                Science × Spirit
-              </p>
+              <SectionLabel index={4}>Science × Spirit</SectionLabel>
               <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
                 Nature has always been
                 <br />
@@ -115,7 +113,7 @@ function ScienceSection() {
                   A mineral. A geological structure. A piece of the earth.
                 </p>
               </div>
-              <div className="border-t-2 border-mineral pt-5">
+              <div className="border-t-2 border-sage pt-5">
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">
                   What we bring
                 </h3>

@@ -1,4 +1,4 @@
-import { FadeIn } from "./Motion";
+import { FadeIn, SectionLabel } from "./Motion";
 
 const STEPS = [
   {
@@ -20,12 +20,10 @@ const STEPS = [
 
 function ExperienceSteps() {
   return (
-    <section className="relative bg-ivory py-20 lg:py-24">
+    <section className="relative border-t border-ink/8 bg-ivory py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mb-12 max-w-2xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-champagne">
-            The reading experience
-          </p>
+          <SectionLabel index={9}>The reading experience</SectionLabel>
           <h2 className="font-display text-balance text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
             A reading, three simple steps.
           </h2>
@@ -35,7 +33,7 @@ function ExperienceSteps() {
           {STEPS.map((step, i) => (
             <FadeIn key={step.number} delay={i * 0.08}>
               <div className="lg:border-l lg:border-ink/10 lg:pl-8">
-                <p className="font-display text-6xl text-champagne">
+                <p className="font-display text-6xl text-solar">
                   {step.number}
                 </p>
                 <h3 className="mt-5 font-display text-3xl text-ink">

@@ -2,7 +2,7 @@ import { FadeIn } from "./Motion";
 
 function GuidanceTransition() {
   return (
-    <section className="relative bg-ivory py-24 lg:py-32">
+    <section className="relative border-t border-ink/8 bg-ivory py-24 lg:py-32">
       <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
         <FadeIn>
           <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl lg:text-7xl">
@@ -24,7 +24,7 @@ function GuidanceTransition() {
             {` `}
             <a
               href="#services"
-              className="font-semibold text-ink underline decoration-champagne decoration-1 underline-offset-8 hover:text-champagne"
+              className="font-semibold text-ink underline decoration-solar decoration-1 underline-offset-8 hover:text-ink-soft"
             >
               Explore our readings ↓
             </a>

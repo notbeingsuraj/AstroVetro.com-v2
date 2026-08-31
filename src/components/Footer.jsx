@@ -6,7 +6,7 @@ const FOOTER_LINKS = {
 
 function Footer() {
   return (
-    <footer className="border-t hairline bg-ivory">
+    <footer className="border-t border-ink/8 bg-ivory">
       <div className="mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -64,7 +64,7 @@ function Footer() {
               />
               <button
                 type="submit"
-                className="rounded-r-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+                className="rounded-r-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink/85"
               >
                 Join
               </button>
@@ -72,7 +72,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t hairline pt-8 sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-ink/8 pt-8 sm:flex-row">
           <p className="text-xs text-ink-soft">
             © {new Date().getFullYear()} AstroVetro. All rights reserved.
           </p>

@@ -1,10 +1,12 @@
 import { useState, useCallback, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import BrandStatement from "./components/BrandStatement";
 import IntentionExplorer from "./components/IntentionExplorer";
 import ProductFeature from "./components/ProductFeature";
 import ProductGrid from "./components/ProductGrid";
 import ScienceSection from "./components/ScienceSection";
+import VisualInterlude from "./components/VisualInterlude";
 import GuidanceTransition from "./components/GuidanceTransition";
 import ServicesSection from "./components/ServicesSection";
 import ExperienceSteps from "./components/ExperienceSteps";
@@ -31,6 +33,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <BrandStatement />
         <IntentionExplorer
           activeIntentionId={activeIntentionId}
           onSelect={handleSelectIntention}
@@ -40,6 +43,7 @@ function App() {
           <ProductGrid activeIntentionId={activeIntentionId} />
         </div>
         <ScienceSection />
+        <VisualInterlude />
         <GuidanceTransition />
         <ServicesSection />
         <ExperienceSteps />

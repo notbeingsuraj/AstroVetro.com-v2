@@ -1,14 +1,15 @@
-import { FadeIn } from "./Motion";
+import { FadeIn, SectionLabel } from "./Motion";
 import testimonials from "../data/testimonials";
 
 function Testimonials() {
   return (
-    <section className="relative bg-ivory py-24 lg:py-32" aria-label="Testimonials">
+    <section
+      className="relative border-t border-ink/8 bg-ivory py-24 lg:py-32"
+      aria-label="Testimonials"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="max-w-2xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-champagne">
-            Community
-          </p>
+          <SectionLabel index={7}>Community</SectionLabel>
           <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
             Stories from the community.
           </h2>
@@ -17,11 +18,14 @@ function Testimonials() {
           </p>
         </FadeIn>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <FadeIn key={t.id} delay={i * 0.06}>
-              <figure className="flex h-full flex-col rounded-2xl border hairline bg-white p-7 shadow-soft">
-                <div className="mb-5 flex gap-1 text-champagne" aria-label="5 out of 5 stars">
+              <figure className="flex h-full flex-col rounded-md border border-ink/8 bg-white p-7 shadow-soft">
+                <div
+                  className="mb-5 flex gap-1 text-solar"
+                  aria-label="5 out of 5 stars"
+                >
                   {Array.from({ length: 5 }).map((_, s) => (
                     <span key={s} aria-hidden="true">
                       ★

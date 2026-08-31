@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import { FadeIn } from "./Motion";
+import { FadeIn, SectionLabel } from "./Motion";
 import products from "../data/products";
 import intentions from "../data/intentions";
 
@@ -14,29 +14,46 @@ function ProductGrid({ activeIntentionId }) {
   return (
     <section
       id="collection"
-      className="relative border-t hairline bg-white py-24 lg:py-32"
+      className="relative border-t border-ink/8 bg-white py-24 lg:py-32"
       aria-label="Product collection"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="max-w-2xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-champagne">
-            The Collection
-          </p>
-          <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-            Objects with intention.
-          </h2>
-          <p className="mt-5 text-pretty text-lg leading-relaxed text-ink-soft">
-            Thoughtfully selected crystals and meaningful objects for the
-            rituals, spaces and moments that matter to you.
-            {active && (
-              <span className="mt-2 block font-medium text-ink">
-                Viewing: {active.title}
-              </span>
-            )}
-          </p>
-        </FadeIn>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <FadeIn className="max-w-2xl">
+            <SectionLabel index={3}>The Collection</SectionLabel>
+            <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
+              Objects with intention.
+            </h2>
+            <p className="mt-5 text-pretty text-lg leading-relaxed text-ink-soft">
+              Thoughtfully selected crystals and meaningful objects for the
+              rituals, spaces and moments that matter to you.
+              {active && (
+                <span className="mt-2 block font-medium text-ink">
+                  Viewing: {active.title}
+                </span>
+              )}
+            </p>
+          </FadeIn>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
+          <FadeIn delay={0.1} className="mb-1">
+            {/* empty-state reset when filtering */}
+            {active && (
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("intentions")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="text-sm font-semibold text-ink/60 underline decoration-solar decoration-2 underline-offset-4 transition-colors hover:text-ink"
+              >
+                Show all pieces
+              </button>
+            )}
+          </FadeIn>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
           {shown.map((product, i) => (
             <FadeIn key={product.id} delay={i * 0.05}>
               <ProductCard product={product} />
