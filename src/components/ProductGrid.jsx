@@ -1,77 +1,107 @@
-import ProductCard from "./ProductCard";
-import { FadeIn, SectionLabel } from "./Motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import products from "../data/products";
 import intentions from "../data/intentions";
 
-// Renders the filtered product collection. When an intention is selected it
-// only shows products that truly belong to that intention (per data/intentions).
+const CATEGORIES = [
+  { id: null, label: "All" },
+  { id: "crystals", label: "Crystals" },
+  { id: "jewellery", label: "Jewellery" },
+  { id: "objects", label: "Objects" },
+  { id: "gifts", label: "Gifts" },
+];
+
+// Visually rich, asymmetric catalogue layout
+// Pattern: BIG - SMALL - MEDIUM - BIG - SMALL - MEDIUM...
+const CARD_SIZES = ["lg", "sm", "md", "lg", "sm", "md"];
+
 function ProductGrid({ activeIntentionId }) {
+  const reduce = useReducedMotion();
   const active = intentions.find((i) => i.id === activeIntentionId);
+  const [category, setCategory] = useState(null);
   const shown = active
     ? products.filter((p) => active.productIds.includes(p.id))
+    : category
+    ? products.filter((p) => p.category === category)
     : products;
 
   return (
     <section
       id="collection"
-      className="relative border-t border-ink/8 bg-white py-24 lg:py-32"
+      className="relative overflow-hidden bg-ivory py-32 lg:py-48"
       aria-label="Product collection"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <FadeIn className="max-w-2xl">
-            <SectionLabel index={3}>The Collection</SectionLabel>
-            <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-              Objects with intention.
+      {/* Large background number */}
+      <div className="pointer-events-none absolute inset-0 flex items-end justify-end pr-8 pb-8">
+        <span className="text-section-num text-ink/[0.04]">05</span>
+      </div>
+
+      <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
+        {/* Header */}
+        <div className="mb-16">
+          <span className="text-micro text-ink/50 mb-6 block">05 — The Objects</span>
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <h2 className="font-display text-display-md text-ink">
+              OBJECTS WITH
+              <br />
+              <span className="italic text-accent-blue">ENERGY.</span>
             </h2>
-            <p className="mt-5 text-pretty text-lg leading-relaxed text-ink-soft">
-              Thoughtfully selected crystals and meaningful objects for the
-              rituals, spaces and moments that matter to you.
-              {active && (
-                <span className="mt-2 block font-medium text-ink">
-                  Viewing: {active.title}
-                </span>
-              )}
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.1} className="mb-1">
-            {/* empty-state reset when filtering */}
             {active && (
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("intentions")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="text-sm font-semibold text-ink/60 underline decoration-solar decoration-2 underline-offset-4 transition-colors hover:text-ink"
-              >
-                Show all pieces
-              </button>
+              <p className="text-lg text-text-secondary">
+                Viewing: <span className="font-semibold text-ink">{active.title}</span>
+              </p>
             )}
-          </FadeIn>
+          </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
-          {shown.map((product, i) => (
-            <FadeIn key={product.id} delay={i * 0.05}>
-              <ProductCard product={product} />
-            </FadeIn>
+        {/* Category navigation — giant typography */}
+        <div className="mb-16 flex flex-wrap gap-8 border-b border-ink/10 pb-8">
+          {CATEGORIES.map((cat) => (
+            <motion.button
+              key={cat.label}
+              type="button"
+              onClick={() => setCategory(cat.id)}
+              whileHover={reduce ? {} : { scale: 1.02 }}
+              className="group relative"
+            >
+              <span
+                className={`font-display text-3xl transition-colors duration-300 ${
+                  category === cat.id
+                    ? "text-accent-blue"
+                    : "text-ink/50 group-hover:text-ink"
+                }`}
+              >
+                {cat.label}
+              </span>
+              <motion.span
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: category === cat.id ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute -bottom-8 left-0 right-0 h-[3px] origin-left bg-accent-blue"
+              />
+            </motion.button>
           ))}
+
+          {active && (
+            <button
+              type="button"
+              onClick={() => document.getElementById("intentions")?.scrollIntoView({ behavior: "smooth" })}
+              className="ml-auto text-sm font-semibold text-ink/60 underline decoration-accent-blue decoration-2 underline-offset-4 transition-colors hover:text-ink"
+            >
+              Show all pieces
+            </button>
+          )}
         </div>
 
-        <FadeIn className="mt-16 text-center">
-          <a
-            href="#"
-            className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-8 py-3.5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink/40"
-          >
-            View all pieces
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-        </FadeIn>
+        {/* Asymmetric collection grid */}
+        <div className="flex flex-wrap gap-6 lg:gap-8">
+          {shown.map((product, i) => {
+            const size = CARD_SIZES[i % CARD_SIZES.length];
+            return (
+              <ProductCard key={product.id} product={product} size={size} index={i} />
+            );
+          })}
+        </div>
       </div>
     </section>
   );
