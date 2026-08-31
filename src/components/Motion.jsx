@@ -38,7 +38,7 @@ export function Fade({ children, delay = 0, className, ...rest }) {
 // SectionLabel — a small editorial eyebrow with a leading numeral.
 export function SectionLabel({ index, children }) {
   return (
-    <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink-soft">
+    <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-text-secondary">
       <span className="opacity-60">{String(index).padStart(2, "0")}</span>
       <span className="inline-block h-px w-8 bg-ink/15" />
       {children}

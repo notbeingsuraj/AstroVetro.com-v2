@@ -1,62 +1,68 @@
-import { FadeIn, SectionLabel } from "./Motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const TRUST = [
   {
     title: "Carefully selected",
     text: "Every piece is chosen by hand for quality, clarity and character.",
-    color: "#a9d7f2",
+    color: "#A7DFFF",
   },
   {
     title: "Thoughtfully sourced",
     text: "We work with suppliers who respect the people and places behind each stone.",
-    color: "#b8d2b6",
+    color: "#BDF5D0",
   },
   {
     title: "Securely packaged",
     text: "Crystals arrive protected, presented and ready to be carried.",
-    color: "#e7c875",
+    color: "#FFE66D",
   },
   {
     title: "Transparent guidance",
     text: "No false claims. Honest, grounded, practical perspective.",
-    color: "#cec3e7",
+    color: "#D9C2FF",
   },
 ];
 
 function TrustSection() {
+  const reduce = useReducedMotion();
+
   return (
     <section
-      className="border-t border-ink/8 bg-white py-24 lg:py-32"
+      className="relative overflow-hidden bg-ivory py-24 lg:py-36"
       aria-label="Why choose AstroVetro"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="max-w-2xl">
-          <SectionLabel index={6}>Our promise</SectionLabel>
-          <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-            Thoughtfully chosen.
+      <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
+        <div className="mb-16">
+          <span className="text-micro text-ink/50 mb-6 block">Our Promise</span>
+          <h2 className="font-display text-display-md text-ink">
+            THOUGHTFULLY CHOSEN.
             <br />
-            <span className="italic">Intentionally offered.</span>
+            <span className="italic text-accent-blue">INTENTIONALLY OFFERED.</span>
           </h2>
-        </FadeIn>
+        </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-ink/8 bg-ink/8 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Horizontal scrolling trust strip */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST.map((item, i) => (
-            <FadeIn key={item.title} delay={i * 0.06} className="bg-white">
-              <div className="flex h-full flex-col justify-between p-8">
-                <div>
-                  <span
-                    className="mb-8 block h-px w-10"
-                    style={{ backgroundColor: item.color }}
-                  />
-                  <h3 className="font-display text-2xl text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
+            <motion.div
+              key={item.title}
+              initial={reduce ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.08, duration: 0.6 }}
+              className="relative border-t-2 pt-8"
+              style={{ borderColor: item.color }}
+            >
+              <span className="text-micro text-ink/40 mb-6 block">
+                0{i + 1}
+              </span>
+              <h3 className="font-display text-2xl text-ink mb-4">
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-text-secondary">
+                {item.text}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>

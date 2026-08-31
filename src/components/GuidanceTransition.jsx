@@ -1,35 +1,77 @@
-import { FadeIn } from "./Motion";
+import { motion, useReducedMotion } from "framer-motion";
+
+const MARQUEE_ITEMS = ["ASTROVETRO", "CRYSTALS", "READINGS", "DISCOVERY", "JEWELLERY"];
 
 function GuidanceTransition() {
+  const reduce = useReducedMotion();
+
   return (
-    <section className="relative border-t border-ink/8 bg-ivory py-24 lg:py-32">
-      <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
-        <FadeIn>
-          <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl lg:text-7xl">
-            Sometimes you need something
-            <br />
-            <span className="italic text-coral">to carry.</span>
-          </h2>
-        </FadeIn>
-        <FadeIn delay={0.1} className="mt-12">
-          <h2 className="font-display text-balance text-5xl leading-tight tracking-tight text-ink sm:text-6xl lg:text-7xl">
-            Sometimes you need something
-            <br />
-            <span className="italic text-celestial">to understand.</span>
-          </h2>
-        </FadeIn>
-        <FadeIn delay={0.2} className="mt-10">
-          <p className="mx-auto max-w-md text-lg leading-relaxed text-ink-soft">
-            Both are a kind of guidance. Both are part of the same journey.
-            {` `}
-            <a
-              href="#services"
-              className="font-semibold text-ink underline decoration-solar decoration-1 underline-offset-8 hover:text-ink-soft"
+    <section className="relative overflow-hidden bg-ivory py-24 lg:py-36">
+      {/* Marquee — horizontal moving type */}
+      <div className="relative overflow-hidden border-y border-ink/10 py-10 mb-20">
+        <motion.div
+          animate={reduce ? {} : { x: [0, -1000] }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="flex whitespace-nowrap"
+        >
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+            <span
+              key={i}
+              className="mx-8 font-display text-7xl text-ink/20 lg:text-8xl"
             >
-              Explore our readings ↓
-            </a>
-          </p>
-        </FadeIn>
+              {item}
+              <span className="mx-8 text-ink/10">•</span>
+            </span>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-10">
+        <span className="text-micro text-ink/50 mb-8 block">08 — The Pivot</span>
+
+        <motion.h2
+          initial={reduce ? {} : { opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-display-lg text-ink"
+        >
+          SOMETIMES YOU NEED
+          <br />
+          SOMETHING <span className="italic text-accent-coral">TO CARRY.</span>
+        </motion.h2>
+
+        <motion.h2
+          initial={reduce ? {} : { opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 font-display text-display-lg text-ink"
+        >
+          SOMETIMES YOU NEED
+          <br />
+          SOMETHING <span className="italic text-accent-blue">TO UNDERSTAND.</span>
+        </motion.h2>
+
+        <motion.p
+          initial={reduce ? {} : { opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mx-auto mt-12 max-w-md text-lg leading-relaxed text-text-secondary"
+        >
+          Both are a kind of guidance. Both are part of the same journey.
+          <a
+            href="#services"
+            className="mt-4 block font-semibold text-ink underline decoration-solar decoration-2 underline-offset-8 transition-colors hover:text-accent-blue"
+          >
+            Explore our readings ↓
+          </a>
+        </motion.p>
       </div>
     </section>
   );

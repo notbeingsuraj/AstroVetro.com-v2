@@ -170,16 +170,6 @@ body {
   }
 }
 
-/* ---- COLOR BLOCK BACKGROUNDS ---- */
-.bg-sky { background-color: var(--color-sky); }
-.bg-solar { background-color: var(--color-solar); }
-.bg-coral { background-color: var(--color-coral); }
-.bg-mint { background-color: var(--color-mint); }
-.bg-peach { background-color: var(--color-peach); }
-.bg-lavender { background-color: var(--color-lavender); }
-.bg-ink { background-color: var(--color-ink); }
-.bg-ivory { background-color: var(--color-ivory); }
-
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *,

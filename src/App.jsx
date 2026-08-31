@@ -32,24 +32,51 @@ function App() {
     <div className="min-h-screen bg-ivory text-ink antialiased">
       <Navbar />
       <main>
+        {/* 01 — The Arrival */}
         <Hero />
+
+        {/* 02 — The Manifesto */}
         <BrandStatement />
+
+        {/* 03 — What Are You Looking For? */}
         <IntentionExplorer
           activeIntentionId={activeIntentionId}
           onSelect={handleSelectIntention}
         />
+
+        {/* 04 — The Objects */}
         <ProductFeature />
-        <div ref={collectionRef}>
+
+        {/* 05 — The Collection */}
+        <div ref={collectionRef} id="collection">
           <ProductGrid activeIntentionId={activeIntentionId} />
         </div>
+
+        {/* 06 — The Mineral Universe */}
         <ScienceSection />
+
+        {/* 07 — Visual Interlude */}
         <VisualInterlude />
+
+        {/* 08 — The Pivot */}
         <GuidanceTransition />
+
+        {/* 09 — The Readings */}
         <ServicesSection />
+
+        {/* 10 — The Reading Experience */}
         <ExperienceSteps />
+
+        {/* 11 — Our Promise */}
         <TrustSection />
+
+        {/* 12 — Stories */}
         <Testimonials />
+
+        {/* 13 — The Journal */}
         <Journal />
+
+        {/* 14 — Final CTA */}
         <FinalCTA />
       </main>
       <Footer />
