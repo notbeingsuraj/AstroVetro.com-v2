@@ -9,7 +9,9 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
   const [hoveredId, setHoveredId] = useState(null);
   const containerRef = useRef(null);
 
-  const activeIntention = intentions.find((i) => i.id === (hoveredId || activeIntentionId));
+  const activeIntention = intentions.find(
+    (i) => i.id === (hoveredId || activeIntentionId),
+  );
   const matchingProducts = activeIntention
     ? activeIntention.productIds
         .map((id) => products.find((p) => p.id === id))
@@ -29,16 +31,21 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
 
       {/* Editorial grid lines */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, var(--color-ink) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(to right, var(--color-ink) 1px, transparent 1px)`,
+            backgroundSize: "100px 100px",
+          }}
+        />
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-6 lg:px-16">
         {/* Header */}
         <div className="mb-20 lg:mb-32">
-          <span className="text-micro text-ink/50 mb-6 block">03 — The Discovery</span>
+          <span className="text-micro text-ink/50 mb-6 block">
+            03 — The Discovery
+          </span>
           <h2 className="font-display text-display-lg text-ink">
             WHAT ARE YOU
             <br />
@@ -64,12 +71,19 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                   initial={reduce ? {} : { opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{
+                    delay: i * 0.05,
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   whileHover={reduce ? {} : { scale: 1.03 }}
                   whileTap={reduce ? {} : { scale: 0.98 }}
                   className="group relative flex flex-col items-start justify-center min-h-[200px] lg:min-h-[240px] p-6 lg:p-8 rounded-xl transition-colors duration-300"
                   style={{
-                    backgroundColor: isActive || isHovered ? intention.color + "40" : "transparent"
+                    backgroundColor:
+                      isActive || isHovered
+                        ? intention.color + "40"
+                        : "transparent",
                   }}
                   aria-pressed={isActive}
                 >
@@ -125,43 +139,55 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-16 border-t border-ink/10 pt-12"
+                className="mt-20 border-t border-ink/10 pt-12"
               >
-                <p className="text-micro text-ink/50 mb-6">
-                  {matchingProducts.length} {matchingProducts.length === 1 ? "piece" : "pieces"} for{" "}
-                  {activeIntention?.title.toLowerCase()}
-                </p>
+                <div className="flex items-center justify-between mb-8">
+                  <p className="text-micro text-ink/50">
+                    {matchingProducts.length}{" "}
+                    {matchingProducts.length === 1 ? "piece" : "pieces"} for{" "}
+                    <span className="font-semibold text-ink">
+                      {activeIntention?.title.toLowerCase()}
+                    </span>
+                  </p>
+                  <a
+                    href="#collection"
+                    className="group inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-tangerine whitespace-nowrap"
+                  >
+                    View all
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </a>
+                </div>
 
-                <div className="flex gap-6 overflow-x-auto pb-4">
+                <div className="flex gap-6 overflow-x-auto pb-4 -mx-2 px-2">
                   {matchingProducts.map((product) => (
                     <motion.a
                       key={product.id}
                       href="#collection"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4 }}
-                      className="group w-44 flex-shrink-0 sm:w-52"
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="group w-40 flex-shrink-0 sm:w-48"
                     >
-                      <ProductImage
-                        product={product}
-                        ratio="square"
-                        className="w-full"
-                      />
-                      <div className="mt-3">
-                        <p className="font-display text-lg text-ink">{product.name}</p>
-                        <p className="text-micro text-text-muted mt-1">₹{product.price}</p>
+                      <div className="relative aspect-square rounded-lg overflow-hidden bg-ivory">
+                        <ProductImage
+                          product={product}
+                          ratio="square"
+                          className="w-full h-full"
+                        />
+                      </div>
+                      <div className="mt-4 text-center">
+                        <p className="font-display text-lg text-ink leading-tight">
+                          {product.name}
+                        </p>
+                        <p className="text-micro text-text-muted mt-1">
+                          ₹{product.price}
+                        </p>
                       </div>
                     </motion.a>
                   ))}
                 </div>
-
-                <a
-                  href="#collection"
-                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-tangerine"
-                >
-                  View all pieces
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </a>
               </motion.div>
             )}
           </AnimatePresence>
