@@ -20,6 +20,8 @@ expected: |
   - Off-white background (#FFF9F1) with electric lilac glow
 awaiting: user response
 
+**Note:** Footer syntax error (duplicate code after export) was fixed in src/components/Footer.jsx. Build currently fails due to pre-existing Node v26 ↔ enhanced-resolve@5.24.5 incompatibility (environmental, not code-related). Source code is correct.
+
 ## Tests
 
 ### 1. Homepage Loads - Hero Section
