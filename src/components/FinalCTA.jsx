@@ -6,31 +6,31 @@ function FinalCTA() {
   return (
     <section
       id="final"
-      className="relative overflow-hidden bg-ink py-32 lg:py-48"
+      className="relative overflow-hidden bg-butter-yellow py-32 lg:py-48"
       aria-label="Final call to action"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="text-section-num text-white/[0.04]">12</span>
+        <span className="text-section-num text-ink/[0.04]">14</span>
       </div>
 
-      {/* Accent glows - kesari + haldi */}
-      <div className="pointer-events-none absolute -left-20 top-0 h-96 w-96 rounded-full bg-kesari/20 blur-[100px]" />
-      <div className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-haldi/20 blur-[100px]" />
+      {/* Deep plum accent block */}
+      <div className="pointer-events-none absolute -left-20 top-1/2 h-[60%] w-[50%] rounded-full bg-deep-plum/20 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-1/2 h-[50%] w-[40%] rounded-full bg-deep-plum/15 blur-[100px]" />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-10">
-        <span className="text-micro text-white/50 mb-8 block">12 — The Invitation</span>
+        <span className="text-micro text-ink/50 mb-8 block">14 — The Invitation</span>
 
         <motion.h2
           initial={reduce ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-display-lg text-white"
+          className="font-display text-display-lg text-ink"
         >
-          START WITH WHAT
-          <br />
-          <span className="italic text-haldi-light">FEELS LIKE YOU.</span>
+          <span className="block">KEEP</span>
+          <span className="block">LOOKING</span>
+          <span className="block italic text-electric-lilac">CLOSER.</span>
         </motion.h2>
 
         <motion.p
@@ -38,10 +38,9 @@ function FinalCTA() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mx-auto mt-8 max-w-md text-lg leading-relaxed text-white/70"
+          className="mx-auto mt-8 max-w-md text-lg leading-relaxed text-text-secondary"
         >
-          Carry something meaningful. Or make space for a new perspective.
-          Either way, begin.
+          Every piece has a story. Find yours.
         </motion.p>
 
         <motion.div
@@ -53,22 +52,22 @@ function FinalCTA() {
         >
           <a
             href="#collection"
-            className="group inline-flex w-full items-center justify-center gap-3 bg-haldi px-10 py-5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-glow-solar sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-ink px-10 py-5 text-sm font-semibold text-ivory transition-all duration-300 hover:bg-deep-plum hover:shadow-lift sm:w-auto"
           >
-            Explore the Collection
+            SHOP ASTROVETRO
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
           <a
             href="#services"
-            className="group inline-flex w-full items-center justify-center gap-3 border-2 border-white/20 px-10 py-5 text-sm font-semibold text-white transition-colors duration-300 hover:border-haldi-light sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-full border-2 border-ink/15 px-10 py-5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink/40 sm:w-auto"
           >
-            Book a Reading
+            DISCOVER READINGS
           </a>
         </motion.div>
       </div>
 
       {/* Bottom transition to footer */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-mayura/30" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-deep-plum/30" />
     </section>
   );
 }
