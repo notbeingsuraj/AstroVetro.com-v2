@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import HeroScene from "./visual/HeroScene";
 
 function Hero() {
   const reduce = useReducedMotion();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [heroFailed, setHeroFailed] = useState(false);
   const { scrollY } = useScroll();
   
   // Parallax transforms
@@ -103,7 +105,7 @@ function Hero() {
       </div>
 
       {/* Main content grid */}
-      <div className="relative mx-auto grid min-h-screen max-w-[1600px] items-center gap-8 px-6 pt-32 pb-20 lg:grid-cols-12 lg:gap-12 lg:px-16 lg:pt-40">
+      <div className="relative mx-auto grid min-h-screen max-w-[1600px] items-center gap-12 px-6 pb-24 pt-32 lg:grid-cols-12 lg:gap-16 lg:px-16 lg:pt-40">
         
         {/* LEFT: Typography + CTAs */}
         <motion.div
@@ -143,7 +145,10 @@ function Hero() {
           </motion.p>
 
           {/* Primary CTAs */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col gap-4 sm:flex-row sm:gap-5"
+          >
             <a
               href="#collection"
               className="group inline-flex items-center justify-center gap-3 bg-ink px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-ink-deep hover:shadow-lift"
@@ -184,7 +189,7 @@ function Hero() {
           className="relative lg:col-span-6"
         >
           {/* Main image container */}
-          <div className="relative aspect-[4/5] w-full max-w-[500px] mx-auto lg:max-w-none">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] md:max-w-[500px] lg:ml-auto lg:max-w-[520px]">
             {/* Background color block */}
             <div className="absolute inset-4 bg-sky/30" />
             
@@ -195,35 +200,25 @@ function Hero() {
               transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative h-full w-full overflow-hidden"
             >
-              {/* Hero crystal image */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-lavender/40 to-sky/60">
-                {/* SVG Crystal Illustration */}
-                <svg viewBox="0 0 400 500" className="h-full w-full p-12 opacity-90">
-                  <defs>
-                    <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#D9C2FF" />
-                      <stop offset="50%" stopColor="#A7DFFF" />
-                      <stop offset="100%" stopColor="#BDF5D0" />
-                    </linearGradient>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-                      <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  {/* Crystal cluster */}
-                  <polygon points="200,40 240,180 200,200 160,180" fill="url(#crystalGrad)" filter="url(#glow)" opacity="0.9" />
-                  <polygon points="160,180 200,200 180,320 140,280" fill="url(#crystalGrad)" filter="url(#glow)" opacity="0.7" />
-                  <polygon points="240,180 200,200 220,320 260,280" fill="url(#crystalGrad)" filter="url(#glow)" opacity="0.8" />
-                  <polygon points="180,320 220,320 200,420" fill="url(#crystalGrad)" filter="url(#glow)" opacity="0.6" />
-                  {/* Light rays */}
-                  <line x1="200" y1="200" x2="200" y2="500" stroke="#A7DFFF" strokeWidth="1" opacity="0.3" />
-                  <line x1="160" y1="180" x2="100" y2="450" stroke="#D9C2FF" strokeWidth="1" opacity="0.2" />
-                  <line x1="240" y1="180" x2="300" y2="450" stroke="#BDF5D0" strokeWidth="1" opacity="0.2" />
-                </svg>
-              </div>
+              {/* Hero crystal image (real photography w/ graceful SVG fallback) */}
+              {!heroFailed ? (
+                <picture className="absolute inset-0">
+                  <source srcSet="/images/hero/hero.webp" type="image/webp" />
+                  <source srcSet="/images/hero/hero.jpg" type="image/jpeg" />
+                  <img
+                    src="/images/hero/hero.jpg"
+                    alt="A large amethyst crystal formation bathed in warm natural light"
+                    fetchPriority="high"
+                    decoding="sync"
+                    width="1200"
+                    height="1500"
+                    onError={() => setHeroFailed(true)}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </picture>
+              ) : (
+                <HeroScene className="absolute inset-0 h-full w-full" />
+              )}
             </motion.div>
 
             {/* Floating editorial labels */}
@@ -231,7 +226,7 @@ function Hero() {
               initial={reduce ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute -left-6 top-12 bg-ink px-4 py-2"
+              className="absolute left-0 top-12 bg-ink px-4 py-2"
             >
               <span className="text-micro text-white">NATURAL · MINERAL</span>
             </motion.div>
@@ -240,7 +235,7 @@ function Hero() {
               initial={reduce ? {} : { opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="absolute -right-4 bottom-24 bg-white px-4 py-2 shadow-soft"
+              className="absolute right-0 bottom-24 bg-white px-4 py-2 shadow-soft"
             >
               <span className="text-micro text-ink">ETHICALLY SOURCED</span>
             </motion.div>
@@ -249,12 +244,12 @@ function Hero() {
             <motion.div
               animate={reduce ? {} : { rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="absolute -right-16 -top-16 h-32 w-32 rounded-full border border-ink/10"
+              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-ink/10"
             />
             <motion.div
               animate={reduce ? {} : { rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="absolute -left-8 bottom-8 h-24 w-24 rounded-full border border-accent-blue/20"
+              className="pointer-events-none absolute -left-4 bottom-8 h-20 w-20 rounded-full border border-accent-blue/20"
             />
           </div>
         </motion.div>

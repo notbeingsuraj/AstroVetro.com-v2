@@ -12,9 +12,16 @@ const CATEGORIES = [
   { id: "gifts", label: "Gifts" },
 ];
 
-// Visually rich, asymmetric catalogue layout
-// Pattern: BIG - SMALL - MEDIUM - BIG - SMALL - MEDIUM...
-const CARD_SIZES = ["lg", "sm", "md", "lg", "sm", "md"];
+// Asymmetric editorial gallery rhythm: spans define a varied, museum-style grid.
+// Pattern: LARGE / SMALL / MEDIUM / LARGE / SMALL / MEDIUM...
+const CARD_SPANS = [
+  { span: "md:col-span-6", size: "lg" },
+  { span: "md:col-span-3", size: "sm" },
+  { span: "md:col-span-3", size: "md" },
+  { span: "md:col-span-6", size: "lg" },
+  { span: "md:col-span-3", size: "sm" },
+  { span: "md:col-span-3", size: "md" },
+];
 
 function ProductGrid({ activeIntentionId }) {
   const reduce = useReducedMotion();
@@ -41,7 +48,7 @@ function ProductGrid({ activeIntentionId }) {
         {/* Header */}
         <div className="mb-16">
           <span className="text-micro text-ink/50 mb-6 block">05 — The Objects</span>
-          <div className="flex flex-wrap items-end justify-between gap-8">
+          <div className="flex flex-wrap items-end justify-between gap-6">
             <h2 className="font-display text-display-md text-ink">
               OBJECTS WITH
               <br />
@@ -56,17 +63,17 @@ function ProductGrid({ activeIntentionId }) {
         </div>
 
         {/* Category navigation — giant typography */}
-        <div className="mb-16 flex flex-wrap gap-8 border-b border-ink/10 pb-8">
+        <div className="mb-16 flex flex-wrap items-center gap-x-10 gap-y-4 border-b border-ink/10 pb-8">
           {CATEGORIES.map((cat) => (
             <motion.button
               key={cat.label}
               type="button"
               onClick={() => setCategory(cat.id)}
               whileHover={reduce ? {} : { scale: 1.02 }}
-              className="group relative"
+              className="group relative pb-2"
             >
               <span
-                className={`font-display text-3xl transition-colors duration-300 ${
+                className={`font-display text-2xl transition-colors duration-300 sm:text-3xl ${
                   category === cat.id
                     ? "text-accent-blue"
                     : "text-ink/50 group-hover:text-ink"
@@ -78,7 +85,7 @@ function ProductGrid({ activeIntentionId }) {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: category === cat.id ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute -bottom-8 left-0 right-0 h-[3px] origin-left bg-accent-blue"
+                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left bg-accent-blue"
               />
             </motion.button>
           ))}
@@ -94,12 +101,14 @@ function ProductGrid({ activeIntentionId }) {
           )}
         </div>
 
-        {/* Asymmetric collection grid */}
-        <div className="flex flex-wrap gap-6 lg:gap-8">
+        {/* Asymmetric collection grid — museum gallery rhythm */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-12 md:gap-x-8">
           {shown.map((product, i) => {
-            const size = CARD_SIZES[i % CARD_SIZES.length];
+            const layout = CARD_SPANS[i % CARD_SPANS.length];
             return (
-              <ProductCard key={product.id} product={product} size={size} index={i} />
+              <div key={product.id} className={`col-span-1 ${layout.span}`}>
+                <ProductCard product={product} size={layout.size} index={i} />
+              </div>
             );
           })}
         </div>

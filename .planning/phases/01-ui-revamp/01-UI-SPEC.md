@@ -35,34 +35,38 @@ created: 2026-08-31
 
 Replace the existing tokens with the new bright tonal system. Keep the two-font typography pairing already configured but extend into a full scale.
 
-### Color (60 / 30 / 10 split)
+### Color (60 / 30 / 10 split) — bright maximalist palette (per brief)
 
 | Token | Hex | Role / Usage |
 |-------|-----|--------------|
-| `--color-ivory` | `#FBFAF6` | **Dominant (60%)** — page background, base surfaces |
-| `--color-pearl` | `#F7F5EF` | Secondary surface for panels |
+| `--color-ivory` | `#FFFDF7` | **Dominant (60%)** — page background, base surfaces, warm ivory |
+| `--color-ivory-warm` | `#FBF8F1` | Secondary warm surface |
 | `--color-white` | `#FFFFFF` | Cards, modals, image frames |
-| `--color-sand` | `#EDE7DA` | Divider tints, subtle section banding (30%) |
-| `--color-ink` | `#181817` | **Text primary** — headings, body |
-| `--color-ink-soft` | `#6D6A63` | **Text secondary** — captions, metadata |
-| `--color-celestial` | `#A9D7F2` | Accent (10%) |
-| `--color-aqua` | `#A9DDD2` | Accent (10%) |
-| `--color-sage` | `#B8D2B6` | Accent (10%) |
-| `--color-solar` | `#E7C875` | Accent (10%) |
-| `--color-peach` | `#F2B99E` | Accent (10%) |
-| `--color-coral` | `#E99D8C` | Accent (10%) |
-| `--color-lavender` | `#CEC3E7` | Accent (10%) |
-| `--color-destructive` | `#C4553F` | Destructive actions only |
+| `--color-ink` | `#11131A` | **Text primary on light** — headings, body; Deep Ink |
+| `--color-ink-deep` | `#0A0B10` | Hover state for dark buttons |
+| `--color-text-secondary` | `#4A4B54` | **Text secondary** — captions, metadata |
+| `--color-text-muted` | `#7A7B85` | Micro-captions |
+| `--color-peach` | `#FFE7D6` | **Secondary (30%)** — large section field (services bg) |
+| `--color-sky` | `#A7DFFF` | **Secondary (30%)** — Electric Sky, large section field (brand/manifesto) |
+| `--color-mint` | `#BDF5D0` | **Secondary (30%)** — Fresh Mint, interlude field |
+| `--color-solar` | `#FFE66D` | **Secondary (30%)** — Solar Yellow, intention-discovery field, final-CTA button |
+| `--color-coral` | `#FF8F70` | **Secondary (30%)** — Coral, reading/experience fields |
+| `--color-lavender` | `#D9C2FF` | **Secondary (30%)** — Lavender, footer field |
+| `--color-accent-blue` | `#6C8CFF` | **Accent (10%)** — Accent Blue, headline accents, links, hovers |
+| `--color-accent-coral` | `#FF6B5A` | Accent — reading headline accent |
+| `--color-accent-gold` | `#FFB800` | Accent |
+| `--color-destructive` | `#E53E3E` | Destructive actions only |
+
+**Color policy — one field per section (rhythm, not rainbow):** Each major section uses a **single large colour field**, not every colour at once. The page moves through deliberate blocks — IVORY (hero) → SKY (manifesto) → SOLAR (intention) → IVORY (featured) → IVORY (collection) → DEEP INK (science) → MINT (interlude) → IVORY (pivot) → PEACH (readings) → LAVENDER (footer) — creating visual rhythm. Accent (10%) is reserved for targeted emotion/discovery moments only.
 
 **Accent reserved for (explicit list):**
-- Intention discovery "moments of emotion": active intention highlight, hover wash, small color chips
-- Image/visual color grading overlays (lavender, gold reflections in photography)
-- Fine editorial rules, metadata numerals, small section markers
-- Category differentiation cues in photography
-- CTA hover accent (one accent per button hover, not multi-color)
-- Do **NOT** apply accents broadly to text, every card, or every button. Ivory/white/charcoal carry ~90% of the interface.
+- Intention discovery: active-intention highlight (`#FFE66D` field), hover colour wash, matching-product preview
+- Headline keyword emphasis (e.g. "FOR YOU.", "THE STARS.", "ENERGY.")
+- Fine editorial rules, section numerals (`text-section-num` at 4–6% opacity), micro-metadata
+- CTA hover accent (one accent per button hover, not multi-colour)
+- Category differentiation cues in the collection
 
-**Rule:** "Do not dump every colour onto the page." Body, headings, buttons and layout surfaces stay ivory/white/charcoal. Accents appear as targeted emotion/discovery moments only.
+**Rule:** "Do not dump every colour onto the page." Body, headings, buttons and layout surfaces stay ivory/ink. Each section shows one dominant field + ink text + a single accent moment. No rainbow sections.
 
 ### Typography
 
@@ -170,23 +174,25 @@ Adopt **minimal, architectural radii** — not bubbly rounded rectangles.
 
 Adopt the brief's recommended journey. Each section = distinct visual rhythm.
 
-| # | Section | Component (`src/components/`) | Key interaction / CTA |
-|---|---------|-------------------------------|------------------------|
-| 01 | Immersive Hero | `Hero` (rewrite) | Headline + 2 CTAs: `Explore the Collection` (primary) + `Explore Readings` (secondary) |
-| 02 | Brand Statement | (new or repurposed) | Short editorial statement, HUGE serif, generous whitespace |
-| 03 | Intention Discovery | `IntentionExplorer` (rewrite) | "What are you looking for?" — intention chips → filters collection |
-| 04 | Featured Product Experience | `ProductFeature` (rewrite) | Story + price + CTA |
-| 05 | Product Collection | `ProductGrid` + `ProductCard` (rewrite) | Grid → product detail |
-| 06 | Science / Nature Story | `ScienceSection` (rewrite) | Minerals/geology/astronomy; responsible, not fake-claims |
-| 07 | Visual Brand Interlude | (new) `VisualInterlude` | Full-bleed positive breathing moment, minimal copy |
-| 08 | Guidance Transition | `GuidanceTransition` (rewrite) | Bridge SHOP → READINGS |
-| 09 | Service Experiences | `ServicesSection` + `ReadingCard` (rewrite) | Duration + price + `Book a Reading` |
-| 10 | Social Proof | `Testimonials` (rewrite) | Real quotes only |
-| 11 | Editorial / Journal | `Journal` (rewrite) | Teaser links |
-| 12 | Final Conversion | `FinalCTA` (rewrite) | Strong closing CTA |
-| 13 | Footer | `Footer` (rewrite) | Nav + trust + fine print |
+| # | Section | Component (`src/components/`) | Colour field | Key interaction / CTA |
+|---|---------|-------------------------------|--------------|------------------------|
+| 01 | Immersive Hero | `Hero` (rewrite) | IVORY + sky/solar glow | Headline + 2 CTAs: `Explore the Collection` (primary) + `Explore Readings` (secondary) |
+| 02 | Brand Statement | `BrandStatement` (rewrite) | SKY `#A7DFFF` | Giant manifesto "WE ARE MADE OF THE SAME MATTER AS THE STARS." |
+| 03 | Intention Discovery | `IntentionExplorer` (rewrite) | SOLAR `#FFE66D` | "What are you looking for?" — intention words → filters collection |
+| 04 | Featured Product Experience | `ProductFeature` (rewrite) | IVORY + product tint | Story + price + CTA |
+| 05 | Product Collection | `ProductGrid` + `ProductCard` (rewrite) | IVORY, asymmetric sizes | Category nav → grid → product detail |
+| 06 | Science / Mineral Universe | `ScienceSection` (rewrite) | DEEP INK `#11131A` | Scientific diagram + facts; responsible, not fake-claims |
+| 07 | Visual Interlude | `VisualInterlude` (rewrite) | MINT `#BDF5D0` | "Made by the earth. Chosen by you." breathing moment |
+| 08 | Guidance Pivot | `GuidanceTransition` (rewrite) | IVORY + marquee | Marquee type + "to carry / to understand" bridge SHOP→READINGS |
+| 09 | Service Experiences | `ServicesSection` (rewrite) | PEACH `#FFE7D6` | Large featured + smaller services; duration + price + `Book a Reading` |
+| 10 | Reading Experience | `ExperienceSteps` (rewrite) | IVORY | 3 steps, giant numbered editorial |
+| 11 | Trust / Promise | `TrustSection` (rewrite) | IVORY | Supported claims with accent rules |
+| 12 | Social Proof | `Testimonials` (rewrite) | PEACH | Real quotes only |
+| 13 | Editorial / Journal | `Journal` (rewrite) | IVORY | Teaser links; "LOOK CLOSER." |
+| 14 | Final Conversion | `FinalCTA` (rewrite) | DEEP INK `#11131A` | Strong closing CTA on solar button |
+| 15 | Footer | `Footer` (rewrite) | LAVENDER `#D9C2FF` | Oversized ASTROVETRO wordmark + "KEEP LOOKING." final CTA |
 
-> Sequence may be adjusted by the executor only if conversion reasoning yields a stronger funnel. The SHOP vs READINGS distinction must be clear and unified under one brand. Do not create two unrelated visual identities.
+> Sequence adopted from the brief's recommended journey, extended with the Reading Experience + Trust steps. The SHOP vs READINGS distinction is clear and unified under one brand through one expressive colour-block system.
 
 ---
 

@@ -1,5 +1,14 @@
 import { motion, useReducedMotion } from "framer-motion";
 import journal from "../data/journal";
+import MineralScene from "./visual/MineralScene";
+
+const SCENE_ID = {
+  "first-crystal": "clear-quartz",
+  "understanding-amethyst": "amethyst",
+  "caring-for-crystals": "selenite",
+  "science-crystal-formations": "labradorite",
+  "tarot-for-reflection": "rose-quartz",
+};
 
 function Journal() {
   const reduce = useReducedMotion();
@@ -46,24 +55,12 @@ function Journal() {
               className={`group block ${i === 0 ? "lg:col-span-2" : ""}`}
             >
               <div className="grid gap-6 sm:grid-cols-2">
-                {/* Article image */}
+                {/* Article image — mineral scene */}
                 <div className="relative aspect-[3/4] overflow-hidden sm:aspect-square">
-                  <div
-                    className="absolute inset-0 flex items-center justify-center"
-                    style={{ backgroundColor: `hsl(${200 + i * 40}, 60%, 88%)` }}
-                  >
-                    {/* Abstract scene placeholder */}
-                    <svg viewBox="0 0 200 200" className="h-full w-full opacity-60">
-                      <defs>
-                        <linearGradient id={`jl-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={`hsl(${200 + i * 40}, 60%, 80%)`} />
-                          <stop offset="100%" stopColor={`hsl(${250 + i * 30}, 60%, 88%)`} />
-                        </linearGradient>
-                      </defs>
-                      <circle cx="100" cy="100" r="60" fill={`url(#jl-${i})`} />
-                      <circle cx="100" cy="100" r="40" fill="none" stroke="#FFFDF7" strokeWidth="2" opacity="0.5" />
-                    </svg>
-                  </div>
+                  <MineralScene
+                    id={SCENE_ID[article.id] ?? "selenite"}
+                    className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
                   <div className="absolute inset-0 bg-ink/0 transition-all duration-300 group-hover:bg-ink/10" />
                 </div>
 

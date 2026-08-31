@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import products from "../data/products";
+import MineralScene from "./visual/MineralScene";
 
 function ProductFeature() {
   const reduce = useReducedMotion();
+  const [failed, setFailed] = useState(false);
   const featured = products.find((p) => p.featured);
 
   if (!featured) return null;
@@ -49,48 +52,45 @@ function ProductFeature() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
+          className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24"
         >
           {/* LEFT: Product Image */}
           <motion.div variants={scaleIn} className="relative order-2 lg:order-1">
             {/* Color block behind image */}
             <div 
-              className="absolute inset-8"
+              className="absolute inset-6"
               style={{ backgroundColor: featured.color + "30" }}
             />
             
-            {/* Main image */}
-            <div className="relative aspect-[4/5] w-full max-w-[500px] mx-auto overflow-hidden">
-              <div 
-                className="absolute inset-0 flex items-center justify-center"
-                style={{ backgroundColor: featured.color + "20" }}
-              >
-                {/* SVG Crystal */}
-                <svg viewBox="0 0 300 400" className="h-3/4 w-3/4 opacity-80">
-                  <defs>
-                    <linearGradient id="amethystGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor={featured.color} />
-                      <stop offset="100%" stopColor="#D9C2FF" />
-                    </linearGradient>
-                  </defs>
-                  <polygon points="150,20 200,150 150,180 100,150" fill="url(#amethystGrad)" opacity="0.9" />
-                  <polygon points="100,150 150,180 130,300 80,260" fill="url(#amethystGrad)" opacity="0.7" />
-                  <polygon points="200,150 150,180 170,300 220,260" fill="url(#amethystGrad)" opacity="0.8" />
-                  <polygon points="130,300 170,300 150,380" fill="url(#amethystGrad)" opacity="0.6" />
-                </svg>
+            {/* Main image — real photography w/ mineral fallback */}
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden lg:max-w-[520px]">
+              {!failed ? (
+                <picture className="absolute inset-0 h-full w-full">
+                  <source srcSet={featured.image} type="image/webp" />
+                  <source srcSet={featured.poster} type="image/jpeg" />
+                  <img
+                    src={featured.poster || featured.image}
+                    alt={featured.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="1000"
+                    onError={() => setFailed(true)}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </picture>
+              ) : (
+                <MineralScene
+                  id={featured.id}
+                  className="absolute inset-0 h-full w-full"
+                />
+              )}
+
+              {/* Floating label */}
+              <div className="absolute left-0 top-8 bg-ink px-4 py-2">
+                <span className="text-micro text-white">FEATURED</span>
               </div>
             </div>
-
-            {/* Floating label */}
-            <motion.div
-              initial={reduce ? {} : { opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -left-4 top-12 bg-ink px-4 py-2"
-            >
-              <span className="text-micro text-white">FEATURED</span>
-            </motion.div>
           </motion.div>
 
           {/* RIGHT: Product Story */}
@@ -98,7 +98,7 @@ function ProductFeature() {
             <span className="text-micro text-ink/50 mb-6 block">04 — The Object</span>
             
             <h2 className="font-display text-display-lg text-ink mb-4">
-              {featured.name.toUpperCase()}
+              {featured.name}
             </h2>
             
             <p className="font-display text-display-sm italic text-accent-blue mb-8">
@@ -113,7 +113,7 @@ function ProductFeature() {
               <span className="font-display text-4xl text-ink">₹{featured.price}</span>
             </div>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <a
                 href="#collection"
                 className="group inline-flex items-center justify-center gap-3 bg-ink px-10 py-5 text-sm font-semibold text-white transition-all duration-300 hover:bg-ink-deep hover:shadow-lift"

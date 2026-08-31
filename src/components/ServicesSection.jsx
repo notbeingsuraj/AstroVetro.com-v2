@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import services from "../data/services";
+import { TarotScene } from "./visual/ServiceVisual";
 
 const SERVICE_COLORS = {
   "tarot-reading": "#D9C2FF",
@@ -8,9 +10,18 @@ const SERVICE_COLORS = {
   "relationship-reading": "#FF8F70",
 };
 
+const SCENES = {
+  "tarot-reading": TarotScene,
+  "personal-guidance": TarotScene,
+  "intuitive-reading": TarotScene,
+  "relationship-reading": TarotScene,
+};
+
 function ServiceCard({ service, index }) {
   const reduce = useReducedMotion();
+  const [failed, setFailed] = useState(false);
   const color = SERVICE_COLORS[service.id] || "#D9C2FF";
+  const Scene = SCENES[service.id] || TarotScene;
 
   return (
     <motion.article
@@ -18,44 +29,32 @@ function ServiceCard({ service, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex flex-col overflow-hidden"
+      className="group relative flex h-full flex-col overflow-hidden"
     >
-      {/* Image area */}
+      {/* Image area — real photography w/ editorial scene fallback */}
       <div className="relative overflow-hidden">
-        <div
-          className="relative aspect-[4/3]"
-          style={{ backgroundColor: color + "30" }}
-        >
-          {/* Tarot-style illustration */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <svg viewBox="0 0 300 400" className="h-3/4 w-3/4 opacity-70">
-              <defs>
-                <linearGradient id={`svc-${service.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor={color} />
-                  <stop offset="100%" stopColor="#FFFDF7" />
-                </linearGradient>
-              </defs>
-              {/* Sun/symbol */}
-              <circle cx="150" cy="160" r="60" fill={`url(#svc-${service.id})`} opacity="0.6" />
-              <circle cx="150" cy="160" r="45" fill="none" stroke={color} strokeWidth="1" opacity="0.5" />
-              {/* Rays */}
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-                <line
-                  key={angle}
-                  x1={150 + Math.cos((angle * Math.PI) / 180) * 70}
-                  y1={160 + Math.sin((angle * Math.PI) / 180) * 70}
-                  x2={150 + Math.cos((angle * Math.PI) / 180) * 85}
-                  y2={160 + Math.sin((angle * Math.PI) / 180) * 85}
-                  stroke={color}
-                  strokeWidth="1.5"
-                  opacity="0.4"
-                />
-              ))}
-            </svg>
-          </div>
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+          {!failed ? (
+            <picture className="absolute inset-0 h-full w-full">
+              <source srcSet={service.image} type="image/webp" />
+              <source srcSet={service.poster} type="image/jpeg" />
+              <img
+                src={service.poster || service.image}
+                alt={service.name}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
+                onError={() => setFailed(true)}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              />
+            </picture>
+          ) : (
+            <Scene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
+          )}
 
           {/* Hover overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/10 group-hover:opacity-100">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/10 group-hover:opacity-100">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-ink shadow-soft transition-transform duration-300 group-hover:scale-110">
               →
             </span>
@@ -72,17 +71,15 @@ function ServiceCard({ service, index }) {
       </div>
 
       {/* Metadata */}
-      <div className="mt-6">
-        <div className="flex items-baseline justify-between">
+      <div className="mt-6 flex flex-1 flex-col">
+        <div className="flex items-baseline justify-between gap-4">
           <h3 className="font-display text-3xl text-ink">{service.name}</h3>
-          <p className="font-display text-2xl text-ink">₹{service.price}</p>
+          <p className="shrink-0 font-display text-2xl text-ink">₹{service.price}</p>
         </div>
 
-        <div className="mt-3 flex items-center gap-4">
-          <span className="text-sm text-text-secondary">{service.duration}</span>
-        </div>
+        <p className="mt-3 text-sm text-text-secondary">{service.duration}</p>
 
-        <p className="mt-4 text-pretty text-sm leading-relaxed text-text-secondary">
+        <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-text-secondary">
           {service.description}
         </p>
 
@@ -100,8 +97,10 @@ function ServiceCard({ service, index }) {
 
 function ServicesSection() {
   const reduce = useReducedMotion();
+  const [featuredFailed, setFeaturedFailed] = useState(false);
   const featured = services.find((s) => s.featured) || services[0];
   const others = services.filter((s) => s.id !== featured.id);
+  const FeaturedScene = SCENES[featured.id] || TarotScene;
 
   return (
     <section
@@ -149,55 +148,45 @@ function ServicesSection() {
           >
             <motion.article
               whileHover={reduce ? {} : { y: -8 }}
-              className="group relative overflow-hidden bg-white shadow-lift"
+              className="group relative flex h-full flex-col overflow-hidden bg-white shadow-lift"
             >
-              <div 
-                className="relative aspect-[4/3]"
-                style={{ backgroundColor: SERVICE_COLORS[featured.id] + "40" }}
-              >
-                {/* Tarot illustration */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg viewBox="0 0 300 400" className="h-3/4 w-3/4 opacity-80">
-                    <defs>
-                      <linearGradient id="svc-featured" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor={SERVICE_COLORS[featured.id]} />
-                        <stop offset="100%" stopColor="#FFFDF7" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="150" cy="150" r="50" fill="url(#svc-featured)" opacity="0.6" />
-                    <circle cx="150" cy="150" r="38" fill="none" stroke={SERVICE_COLORS[featured.id]} strokeWidth="1" />
-                    {[0, 60, 120, 180, 240, 300].map((angle) => (
-                      <line
-                        key={angle}
-                        x1={150 + Math.cos((angle * Math.PI) / 180) * 60}
-                        y1={150 + Math.sin((angle * Math.PI) / 180) * 60}
-                        x2={150 + Math.cos((angle * Math.PI) / 180) * 75}
-                        y2={150 + Math.sin((angle * Math.PI) / 180) * 75}
-                        stroke={SERVICE_COLORS[featured.id]}
-                        strokeWidth="1.5"
-                        opacity="0.4"
-                      />
-                    ))}
-                  </svg>
-                </div>
-                
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+                {!featuredFailed ? (
+                  <picture className="absolute inset-0 h-full w-full">
+                    <source srcSet={featured.image} type="image/webp" />
+                    <source srcSet={featured.poster} type="image/jpeg" />
+                    <img
+                      src={featured.poster || featured.image}
+                      alt={featured.name}
+                      loading="lazy"
+                      decoding="async"
+                      width="800"
+                      height="600"
+                      onError={() => setFeaturedFailed(true)}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+                  </picture>
+                ) : (
+                  <FeaturedScene className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
+                )}
+
                 <div className="absolute left-4 top-4 px-3 py-1.5" style={{ backgroundColor: SERVICE_COLORS[featured.id] }}>
                   <span className="text-micro text-ink">FEATURED</span>
                 </div>
               </div>
 
-              <div className="p-8">
-                <div className="flex items-baseline justify-between">
+              <div className="flex flex-1 flex-col p-8">
+                <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-display text-4xl text-ink">{featured.name}</h3>
-                  <p className="font-display text-3xl text-ink">₹{featured.price}</p>
+                  <p className="shrink-0 font-display text-3xl text-ink">₹{featured.price}</p>
                 </div>
                 <p className="mt-3 text-sm text-text-secondary">{featured.duration} · {featured.format}</p>
-                <p className="mt-5 text-pretty leading-relaxed text-text-secondary">
+                <p className="mt-5 flex-1 text-pretty leading-relaxed text-text-secondary">
                   {featured.description}
                 </p>
                 <a
                   href="#"
-                  className="group/link mt-8 inline-flex items-center gap-2 bg-ink px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-ink-deep"
+                  className="group/link mt-8 inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-ink-deep"
                 >
                   Book a Reading
                   <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
@@ -207,7 +196,7 @@ function ServicesSection() {
           </motion.div>
 
           {/* Other services */}
-          <div className="lg:col-span-2 grid gap-12 sm:grid-cols-2 lg:gap-16">
+          <div className="grid gap-12 sm:grid-cols-2 lg:col-span-2 lg:gap-16">
             {others.map((service, i) => (
               <ServiceCard key={service.id} service={service} index={i} />
             ))}

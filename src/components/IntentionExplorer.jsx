@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import intentions from "../data/intentions";
 import products from "../data/products";
+import ProductImage from "./visual/ProductImage";
 
 function IntentionExplorer({ activeIntentionId, onSelect }) {
   const reduce = useReducedMotion();
@@ -146,24 +147,15 @@ function IntentionExplorer({ activeIntentionId, onSelect }) {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4 }}
-                      className="group flex-shrink-0"
+                      className="group w-44 flex-shrink-0 sm:w-52"
                     >
-                      <div
-                        className="relative h-48 w-48 overflow-hidden lg:h-64 lg:w-64"
-                        style={{ backgroundColor: product.color + "40" }}
-                      >
-                        {/* Product image or gradient placeholder */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-display text-4xl text-ink/20">
-                            {product.name.charAt(0)}
-                          </span>
-                        </div>
-                        
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/10" />
-                      </div>
-                      <div className="mt-4">
-                        <p className="font-display text-lg">{product.name}</p>
+                      <ProductImage
+                        product={product}
+                        ratio="aspect-square"
+                        className="w-full"
+                      />
+                      <div className="mt-3">
+                        <p className="font-display text-lg text-ink">{product.name}</p>
                         <p className="text-micro text-ink/50 mt-1">₹{product.price}</p>
                       </div>
                     </motion.a>
