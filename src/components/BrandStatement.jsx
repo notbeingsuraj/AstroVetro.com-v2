@@ -24,18 +24,18 @@ function BrandStatement() {
   return (
     <section
       id="brand"
-      className="relative overflow-hidden bg-sand py-32 lg:py-48"
+      className="relative overflow-hidden bg-tamra py-32 lg:py-48"
       aria-label="Brand statement"
     >
       {/* Large background number */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="text-section-num text-ink/[0.04]">02</span>
+        <span className="text-section-num text-shyama/[0.03]">02</span>
       </div>
 
       {/* Editorial grid lines */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, var(--color-ink) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, var(--color-shyama) 1px, transparent 1px)`,
           backgroundSize: '120px 120px',
         }} />
       </div>
@@ -50,21 +50,21 @@ function BrandStatement() {
       >
         {/* Section label */}
         <motion.div variants={fadeUp} className="mb-12">
-          <span className="text-micro text-ink/60">02 — The Manifesto</span>
+          <span className="text-micro text-shyama/50">02 — The Manifesto</span>
         </motion.div>
 
         {/* MASSIVE editorial statement */}
         <motion.h2 variants={fadeUp} className="mb-16">
-          <span className="block font-display text-display-xl text-ink">
+          <span className="block font-display text-display-xl text-shyama">
             WE ARE
           </span>
-          <span className="block font-display text-display-xl text-ink">
+          <span className="block font-display text-display-xl text-shyama">
             MADE OF
           </span>
-          <span className="block font-display text-display-xl text-ink">
+          <span className="block font-display text-display-xl text-shyama">
             THE SAME
           </span>
-          <span className="block font-display text-display-xl text-ink">
+          <span className="block font-display text-display-xl text-shyama">
             MATTER AS
           </span>
           <span className="block font-display text-display-xl italic text-kesari">
@@ -74,7 +74,7 @@ function BrandStatement() {
 
         {/* Supporting copy — narrow editorial column */}
         <motion.div variants={fadeUp} className="mx-auto max-w-lg">
-          <p className="text-lg leading-relaxed text-ink/70">
+          <p className="text-lg leading-relaxed text-text-secondary">
             Every crystal began as silence and pressure. Every reading begins as
             a question. AstroVetro exists at the meeting point — where earth
             meets intention.
@@ -89,8 +89,8 @@ function BrandStatement() {
           transition={{ delay: 0.5, duration: 1 }}
           className="absolute -left-8 top-1/4 hidden lg:block"
         >
-          <div className="h-32 w-px bg-ink/20" />
-          <span className="mt-4 block text-micro text-ink/40">EST. 2024</span>
+          <div className="h-32 w-px bg-shyama/15" />
+          <span className="mt-4 block text-micro text-shyama/30">EST. 2024</span>
         </motion.div>
 
         <motion.div
