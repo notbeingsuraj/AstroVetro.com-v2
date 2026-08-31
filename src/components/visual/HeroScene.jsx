@@ -28,8 +28,8 @@ export default function HeroScene({ className }) {
           <stop offset="100%" stopColor="#fffdf7" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="hs-orb" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#9ec7e3" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#9ec7e3" stopOpacity="0" />
+          <stop offset="0%" stopColor="#a9d7f2" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#a9d7f2" stopOpacity="0" />
         </linearGradient>
       </defs>
 
